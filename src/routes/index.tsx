@@ -16,6 +16,7 @@ import {
   Award,
   ArrowRight,
   Menu,
+  type LucideIcon,
 } from "lucide-react";
 import { useState } from "react";
 import heroImg from "@/assets/dr-suranjana-hero.jpg";
@@ -29,10 +30,14 @@ export const Route = createFileRoute("/")({
         content:
           "MDS Oral & Maxillofacial Surgeon specializing in head & neck oncosurgery, maxillofacial reconstruction and general dentistry. Siliguri, West Bengal.",
       },
-      { property: "og:title", content: "Dr. Suranjana Roy — Oral & Maxillofacial Surgeon" },
+      {
+        property: "og:title",
+        content: "Dr. Suranjana Roy — Oral & Maxillofacial Surgeon",
+      },
       {
         property: "og:description",
-        content: "Specialist care in oral surgery, head & neck oncosurgery and comprehensive dentistry.",
+        content:
+          "Specialist care in oral surgery, head & neck oncosurgery and comprehensive dentistry.",
       },
     ],
   }),
@@ -75,15 +80,21 @@ const services = [
 const publications = [
   {
     type: "Published Case Report",
-    title: "Management of Odontogenic Keratocyst (OKC) with Segmental Resection",
+    title:
+      "Management of Odontogenic Keratocyst (OKC) with Segmental Resection",
     icon: FileText,
   },
   {
     type: "Paper Presentation",
-    title: "Management of Verrucous Carcinoma — 16th Asian Congress on Oral & Maxillofacial Surgery",
+    title:
+      "Management of Verrucous Carcinoma — 16th Asian Congress on Oral & Maxillofacial Surgery",
     icon: Award,
   },
-  { type: "Paper Presentation", title: "Improving Accuracy in Nodal Staging of Oral Cancer", icon: Award },
+  {
+    type: "Paper Presentation",
+    title: "Improving Accuracy in Nodal Staging of Oral Cancer",
+    icon: Award,
+  },
 ];
 
 function Index() {
@@ -102,7 +113,10 @@ function Index() {
       {/* Nav */}
       <header className="sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <a href="#home" className="flex items-center gap-2 font-semibold text-lg">
+          <a
+            href="#home"
+            className="flex items-center gap-2 font-semibold text-lg"
+          >
             <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary text-primary-foreground">
               <Stethoscope className="h-5 w-5" />
             </span>
@@ -136,7 +150,11 @@ function Index() {
           >
             Book Appointment
           </Link>
-          <button className="md:hidden p-2" onClick={() => setOpen(!open)} aria-label="Menu">
+          <button
+            className="md:hidden p-2"
+            onClick={() => setOpen(!open)}
+            aria-label="Menu"
+          >
             <Menu className="h-5 w-5" />
           </button>
         </div>
@@ -144,11 +162,21 @@ function Index() {
           <div className="md:hidden border-t border-border bg-background px-6 py-4 flex flex-col gap-4">
             {nav.map((n) =>
               n.to ? (
-                <Link key={n.href} to={n.to} onClick={() => setOpen(false)} className="text-sm text-muted-foreground">
+                <Link
+                  key={n.href}
+                  to={n.to}
+                  onClick={() => setOpen(false)}
+                  className="text-sm text-muted-foreground"
+                >
                   {n.label}
                 </Link>
               ) : (
-                <a key={n.href} href={n.href} onClick={() => setOpen(false)} className="text-sm text-muted-foreground">
+                <a
+                  key={n.href}
+                  href={n.href}
+                  onClick={() => setOpen(false)}
+                  className="text-sm text-muted-foreground"
+                >
                   {n.label}
                 </a>
               ),
@@ -165,7 +193,11 @@ function Index() {
       </header>
 
       {/* Hero */}
-      <section id="home" className="relative overflow-hidden" style={{ background: "var(--gradient-hero)" }}>
+      <section
+        id="home"
+        className="relative overflow-hidden"
+        style={{ background: "var(--gradient-hero)" }}
+      >
         <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-primary/10 blur-3xl" />
         <div className="max-w-7xl mx-auto px-6 pt-5 pb-14 md:pt-7 md:pb-20 grid md:grid-cols-2 gap-12 items-center relative">
           <div>
@@ -178,10 +210,12 @@ function Index() {
             >
               Dr. Suranjana Roy — Oral & Maxillofacial Surgeon
             </h1>
-            <p className="mt-4 text-xl md:text-2xl font-medium text-primary">MDS — Oral & Maxillofacial Surgeon</p>
+            <p className="mt-4 text-xl md:text-2xl font-medium text-primary">
+              MDS — Oral & Maxillofacial Surgeon
+            </p>
             <p className="mt-5 text-muted-foreground text-lg max-w-xl leading-relaxed">
-              Specialized in head and neck surgical oncology, maxillofacial reconstruction, and comprehensive general
-              dentistry.
+              Specialized in head and neck surgical oncology, maxillofacial
+              reconstruction, and comprehensive general dentistry.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
@@ -217,12 +251,18 @@ function Index() {
       <section id="services" className="py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-sm font-semibold text-primary uppercase tracking-wider">Services</p>
-            <h2 className="mt-3 text-4xl md:text-5xl font-bold" style={{ color: "var(--navy)" }}>
+            <p className="text-sm font-semibold text-primary uppercase tracking-wider">
+              Services
+            </p>
+            <h2
+              className="mt-3 text-4xl md:text-5xl font-bold"
+              style={{ color: "var(--navy)" }}
+            >
               Comprehensive specialist care
             </h2>
             <p className="mt-4 text-muted-foreground text-lg">
-              From complex maxillofacial surgery to everyday dental care, delivered with precision and compassion.
+              From complex maxillofacial surgery to everyday dental care,
+              delivered with precision and compassion.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -233,12 +273,20 @@ function Index() {
                 style={{ boxShadow: "var(--shadow-card)" }}
               >
                 <div className="h-14 w-14 rounded-2xl bg-secondary flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                  <s.icon className="h-7 w-7 text-primary group-hover:text-primary-foreground" strokeWidth={1.5} />
+                  <s.icon
+                    className="h-7 w-7 text-primary group-hover:text-primary-foreground"
+                    strokeWidth={1.5}
+                  />
                 </div>
-                <h3 className="text-lg font-semibold mb-2" style={{ color: "var(--navy)" }}>
+                <h3
+                  className="text-lg font-semibold mb-2"
+                  style={{ color: "var(--navy)" }}
+                >
                   {s.title}
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {s.desc}
+                </p>
               </div>
             ))}
           </div>
@@ -249,13 +297,20 @@ function Index() {
       <section id="about" className="py-24 bg-secondary/40">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-start">
           <div>
-            <p className="text-sm font-semibold text-primary uppercase tracking-wider">About</p>
-            <h2 className="mt-3 text-4xl md:text-5xl font-bold" style={{ color: "var(--navy)" }}>
+            <p className="text-sm font-semibold text-primary uppercase tracking-wider">
+              About
+            </p>
+            <h2
+              className="mt-3 text-4xl md:text-5xl font-bold"
+              style={{ color: "var(--navy)" }}
+            >
               Clinical excellence rooted in academic rigor
             </h2>
             <p className="mt-6 text-muted-foreground text-lg leading-relaxed">
-              MDS-qualified Oral and Maxillofacial Surgeon with clinical and academic training in head and neck surgical
-              oncology and maxillofacial pathology. Committed to evidence-based, patient-first care.
+              MDS-qualified Oral and Maxillofacial Surgeon with clinical and
+              academic training in head and neck surgical oncology and
+              maxillofacial pathology. Committed to evidence-based,
+              patient-first care.
             </p>
           </div>
           <div className="space-y-5">
@@ -291,8 +346,13 @@ function Index() {
       <section id="academic" className="py-24">
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <p className="text-sm font-semibold text-primary uppercase tracking-wider">Academic Work</p>
-            <h2 className="mt-3 text-4xl md:text-5xl font-bold" style={{ color: "var(--navy)" }}>
+            <p className="text-sm font-semibold text-primary uppercase tracking-wider">
+              Academic Work
+            </p>
+            <h2
+              className="mt-3 text-4xl md:text-5xl font-bold"
+              style={{ color: "var(--navy)" }}
+            >
               Publications & Presentations
             </h2>
           </div>
@@ -311,8 +371,13 @@ function Index() {
                   >
                     <p.icon className="h-5 w-5" />
                   </div>
-                  <p className="text-xs font-semibold text-primary uppercase tracking-wider">{p.type}</p>
-                  <h3 className="mt-2 text-lg font-semibold leading-snug" style={{ color: "var(--navy)" }}>
+                  <p className="text-xs font-semibold text-primary uppercase tracking-wider">
+                    {p.type}
+                  </p>
+                  <h3
+                    className="mt-2 text-lg font-semibold leading-snug"
+                    style={{ color: "var(--navy)" }}
+                  >
                     {p.title}
                   </h3>
                 </div>
@@ -331,11 +396,15 @@ function Index() {
           >
             <div className="grid md:grid-cols-2 gap-8 items-center relative">
               <div>
-                <h3 className="text-3xl md:text-4xl font-bold" style={{ color: "var(--navy)" }}>
+                <h3
+                  className="text-3xl md:text-4xl font-bold"
+                  style={{ color: "var(--navy)" }}
+                >
                   Have a question? Let's talk.
                 </h3>
                 <p className="mt-3 text-muted-foreground text-lg">
-                  Reach out to schedule a consultation or discuss a clinical case.
+                  Reach out to schedule a consultation or discuss a clinical
+                  case.
                 </p>
                 <Link
                   to="/book-appointment"
@@ -351,7 +420,11 @@ function Index() {
       </section>
 
       {/* Footer / Contact */}
-      <footer id="contact" className="text-white" style={{ background: "var(--navy)" }}>
+      <footer
+        id="contact"
+        className="text-white"
+        style={{ background: "var(--navy)" }}
+      >
         <div className="max-w-7xl mx-auto px-6 py-20">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
             <div className="lg:col-span-1">
@@ -362,19 +435,36 @@ function Index() {
                 Dr. Suranjana Roy
               </div>
               <p className="text-sm text-white/70 leading-relaxed">
-                Oral & Maxillofacial Surgeon. Compassionate, specialist-led care.
+                Oral & Maxillofacial Surgeon. Compassionate, specialist-led
+                care.
               </p>
             </div>
-            <ContactItem icon={Phone} title="Phone" lines={["+91 7980103899"]} />
-            <ContactItem icon={Mail} title="Email" lines={["drsuranjanaroy@gmail.com"]} />
+            <ContactItem
+              icon={Phone}
+              title="Phone"
+              lines={["+91 7980103899"]}
+            />
+            <ContactItem
+              icon={Mail}
+              title="Email"
+              lines={["drsuranjanaroy@gmail.com"]}
+            />
             <ContactItem
               icon={MapPin}
               title="Location"
-              lines={["Siliguri, West Bengal", "Pin 734011", "& also At", "Jadavpur, Kolkata"]}
+              lines={[
+                "Siliguri, West Bengal",
+                "Pin 734011",
+                "& also At",
+                "Jadavpur, Kolkata",
+              ]}
             />
           </div>
           <div className="mt-14 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between gap-4 text-sm text-white/60">
-            <p>© {new Date().getFullYear()} Dr. Suranjana Roy. All rights reserved.</p>
+            <p>
+              © {new Date().getFullYear()} Dr. Suranjana Roy. All rights
+              reserved.
+            </p>
             <p>WBDC Reg. No. 7324-A</p>
           </div>
         </div>
@@ -383,7 +473,17 @@ function Index() {
   );
 }
 
-function Card({ icon: Icon, title, sub, meta }: { icon: any; title: string; sub: string; meta: string }) {
+function Card({
+  icon: Icon,
+  title,
+  sub,
+  meta,
+}: {
+  icon: LucideIcon;
+  title: string;
+  sub: string;
+  meta: string;
+}) {
   return (
     <div
       className="bg-card p-6 rounded-2xl border border-border flex items-start gap-4"
@@ -403,12 +503,22 @@ function Card({ icon: Icon, title, sub, meta }: { icon: any; title: string; sub:
   );
 }
 
-function ContactItem({ icon: Icon, title, lines }: { icon: any; title: string; lines: string[] }) {
+function ContactItem({
+  icon: Icon,
+  title,
+  lines,
+}: {
+  icon: LucideIcon;
+  title: string;
+  lines: string[];
+}) {
   return (
     <div>
       <div className="flex items-center gap-2 mb-3">
         <Icon className="h-4 w-4 text-white/70" />
-        <h4 className="font-semibold text-sm uppercase tracking-wider text-white/90">{title}</h4>
+        <h4 className="font-semibold text-sm uppercase tracking-wider text-white/90">
+          {title}
+        </h4>
       </div>
       <div className="space-y-1">
         {lines.map((l) => (
