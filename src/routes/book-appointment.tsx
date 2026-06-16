@@ -171,7 +171,7 @@ function BookAppointment() {
             <div className="bg-card border border-border rounded-2xl p-6" style={{ boxShadow: "var(--shadow-card)" }}>
               <h3 className="font-semibold mb-4" style={{ color: "var(--navy)" }}>Direct contact</h3>
               <Info icon={Phone} lines={["+91 7980103899"]} />
-              <Info icon={Mail} lines={["23suranjanaroy@gmail.com"]} />
+              <Info icon={Mail} lines={["drsuranjanaroy@gmail.com"]} />
               <Info icon={MapPin} lines={["Siliguri, West Bengal", "Pin 734011", "Jadavpur, Kolkata"]} />
             </div>
             <div className="rounded-2xl p-6 text-white" style={{ background: "var(--navy)" }}>

@@ -366,7 +366,7 @@ function Index() {
               </p>
             </div>
             <ContactItem icon={Phone} title="Phone" lines={["+91 7980103899"]} />
-            <ContactItem icon={Mail} title="Email" lines={["23suranjanaroy@gmail.com"]} />
+            <ContactItem icon={Mail} title="Email" lines={["drsuranjanaroy@gmail.com"]} />
             <ContactItem
               icon={MapPin}
               title="Location"
