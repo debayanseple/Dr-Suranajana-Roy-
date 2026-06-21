@@ -147,4 +147,62 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
+
+  /* Smooth in-page scrolling for anchor (#section) navigation. */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Keep anchored sections clear of the sticky 64px header when scrolled to. */
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+}
+
+/* Scroll-reveal: elements start hidden and fade/slide in once in view.
+   Toggled by the <Reveal> component adding `.is-visible`. */
+.reveal {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition:
+    opacity 0.7s ease-out,
+    transform 0.7s ease-out;
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* A gentle float for decorative hero accents. */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+.animate-float {
+  animation: float 7s ease-in-out infinite;
+}
+
+/* Respect users who prefer reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .animate-float {
+    animation: none !important;
+  }
 }
