@@ -99,8 +99,8 @@ const publications = [
 
 function Index() {
   const [open, setOpen] = useState(false);
-  const nav = [
-    { href: "#home", label: "Home", to: null as string | null },
+  const nav: { href: string; label: string; to: "/case-studies" | null }[] = [
+    { href: "#home", label: "Home", to: null },
     { href: "#about", label: "About", to: null },
     { href: "#services", label: "Services", to: null },
     { href: "/case-studies", label: "Case Studies", to: "/case-studies" },
