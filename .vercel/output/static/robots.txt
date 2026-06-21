@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dr-suranjana-roy.lovable.app/sitemap.xml

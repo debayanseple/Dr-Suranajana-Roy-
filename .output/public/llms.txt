@@ -1,0 +1,13 @@
+# Dr. Suranjana Roy
+
+> MDS Oral & Maxillofacial Surgeon specializing in head & neck oncosurgery, maxillofacial reconstruction, and general dentistry. Practicing in Siliguri and Kolkata, West Bengal.
+
+## Pages
+
+- [Home](/): Overview of services, qualifications, and academic work.
+- [Book Appointment](/book-appointment): Contact information and consultation booking.
+- [Case Studies](/case-studies): Clinical case studies index.
+- [Right Neck Schwannoma](/case-studies/right-neck-schwannoma): Case study.
+- [Odontogenic Keratocyst](/case-studies/odontogenic-keratocyst): Case study.
+- [Verrucous Carcinoma (Buccal)](/case-studies/verrucous-carcinoma-buccal): Case study.
+- [Panfacial Trauma Reconstruction](/case-studies/panfacial-trauma-reconstruction): Case study.

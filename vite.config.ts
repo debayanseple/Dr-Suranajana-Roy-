@@ -12,4 +12,18 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Force-enable the Nitro deploy plugin and pin it to Vercel.
+  //
+  // Without an explicit `nitro` option the wrapper only runs Nitro inside the
+  // Lovable sandbox; on Vercel (no sandbox) it skips Nitro entirely, leaving no
+  // deployable server handler — every route 404s. Passing an object marks nitro
+  // "explicit", so it runs during `vite build`, and `preset: "vercel"` overrides
+  // the wrapper's default `cloudflare-module`, emitting the Vercel Build Output
+  // API directory (.vercel/output) instead of a Cloudflare Worker bundle.
+  //
+  // Override locally/CI with the NITRO_PRESET env var if you ever need a
+  // different target.
+  nitro: {
+    preset: process.env.NITRO_PRESET ?? "vercel",
+  },
 });
