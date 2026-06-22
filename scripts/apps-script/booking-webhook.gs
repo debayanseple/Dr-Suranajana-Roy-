@@ -6,10 +6,23 @@
 // First deploy triggers a Google OAuth consent screen (Sheets + Gmail scope)
 // that only the spreadsheet owner can approve.
 
-const SHEET_ID = "1EKIrbIZDrwT103JS68Aan4F8r4sQPjWfOowhzSUcDfk";
+const SHEET_ID = "155_lHU7bgStole7q1K6yiZTS8lvZ1FsccO7NoszLmzU";
 const SHEET_NAME = "Appointments";
-const NOTIFY_EMAIL = "drsuranjanaroy@gmail.com";
+const NOTIFY_EMAIL = "23suranjanaroy@gmail.com";
 const HEADERS = ["Full name", "Phone", "Email", "Service", "Preferred date", "Preferred time", "Notes"];
+
+// Health check: open the /exec URL in a browser to confirm which sheet the
+// CURRENTLY DEPLOYED version is writing to. If activeSheetId here is not the
+// one you expect, you edited the code but did not "Deploy > New version".
+function doGet() {
+  return jsonResponse({
+    ok: true,
+    status: "Booking webhook is live",
+    activeSheetId: SHEET_ID,
+    sheetName: SHEET_NAME,
+    notifyEmail: NOTIFY_EMAIL,
+  });
+}
 
 function doPost(e) {
   try {

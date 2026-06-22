@@ -15,7 +15,7 @@ import "../_libs/cookie-es.mjs";
 import "../_libs/seroval.mjs";
 import "../_libs/seroval-plugins.mjs";
 import "node:stream/web";
-const appCss = "/assets/styles-BZsSbsxX.css";
+const appCss = "/assets/styles-Duwq22CQ.css";
 function reportLovableError(error, context = {}) {
   if (typeof window === "undefined") return;
   window.__lovableEvents?.captureException?.(
@@ -133,7 +133,7 @@ function RootComponent() {
   const { queryClient } = Route$4.useRouteContext();
   return /* @__PURE__ */ jsxRuntimeExports.jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsxRuntimeExports.jsx("main", { children: /* @__PURE__ */ jsxRuntimeExports.jsx(Outlet, {}) }) });
 }
-const $$splitComponentImporter$3 = () => import("./book-appointment-C_jHNqHp.mjs");
+const $$splitComponentImporter$3 = () => import("./book-appointment-BoiaCjoA.mjs");
 const Route$3 = createFileRoute("/book-appointment")({
   head: () => ({
     meta: [{
@@ -169,7 +169,7 @@ const Route$2 = createFileRoute("/")({
   }),
   component: lazyRouteComponent($$splitComponentImporter$2, "component")
 });
-const $$splitComponentImporter$1 = () => import("./case-studies.index-CpL8fhZN.mjs");
+const $$splitComponentImporter$1 = () => import("./case-studies.index-DidMsNWw.mjs");
 const Route$1 = createFileRoute("/case-studies/")({
   head: () => ({
     meta: [{
@@ -366,7 +366,7 @@ const caseStudies = [
   }
 ];
 const getCaseStudy = (slug) => caseStudies.find((c) => c.slug === slug);
-const $$splitComponentImporter = () => import("./case-studies._slug-DjOD-4lS.mjs");
+const $$splitComponentImporter = () => import("./case-studies._slug-dwgTIqpG.mjs");
 const $$splitErrorComponentImporter = () => import("./case-studies._slug-Bb1-Rub7.mjs");
 const $$splitNotFoundComponentImporter = () => import("./case-studies._slug-Dn__g5xU.mjs");
 const Route = createFileRoute("/case-studies/$slug")({

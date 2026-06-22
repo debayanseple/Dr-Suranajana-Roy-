@@ -1,6 +1,6 @@
 import { j as jsxRuntimeExports } from "../_libs/react.mjs";
 import { L as Link } from "../_libs/tanstack__react-router.mjs";
-import { c as caseStudies } from "./router-DQnj5c3y.mjs";
+import { c as caseStudies } from "./router-BfR5vuO9.mjs";
 import { S as Stethoscope, A as ArrowLeft, d as ArrowRight } from "../_libs/lucide-react.mjs";
 import "../_libs/tanstack__router-core.mjs";
 import "../_libs/tanstack__history.mjs";
