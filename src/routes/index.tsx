@@ -18,8 +18,16 @@ import {
   Menu,
   type LucideIcon,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import heroImg from "@/assets/dr-suranjana-hero.jpg";
+import { AppointmentForm } from "@/components/appointment-form";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -99,6 +107,13 @@ const publications = [
 
 function Index() {
   const [open, setOpen] = useState(false);
+  const [appointmentOpen, setAppointmentOpen] = useState(false);
+
+  // Auto-open the appointment popup on every page load.
+  useEffect(() => {
+    setAppointmentOpen(true);
+  }, []);
+
   const nav: { href: string; label: string; to: "/case-studies" | null }[] = [
     { href: "#home", label: "Home", to: null },
     { href: "#about", label: "About", to: null },
@@ -110,6 +125,22 @@ function Index() {
 
   return (
     <div className="min-h-screen bg-background text-foreground scroll-smooth">
+      {/* Appointment popup — auto-opens on load */}
+      <Dialog open={appointmentOpen} onOpenChange={setAppointmentOpen}>
+        <DialogContent className="max-w-xl max-h-[90vh] overflow-y-auto p-6 sm:p-8">
+          <DialogHeader>
+            <DialogTitle style={{ color: "var(--navy)" }}>
+              Book a consultation
+            </DialogTitle>
+            <DialogDescription>
+              Share your details and preferred time. We'll confirm your
+              appointment shortly.
+            </DialogDescription>
+          </DialogHeader>
+          <AppointmentForm />
+        </DialogContent>
+      </Dialog>
+
       {/* Nav */}
       <header className="sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
