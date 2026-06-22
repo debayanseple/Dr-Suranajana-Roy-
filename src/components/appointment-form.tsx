@@ -17,11 +17,13 @@ const services = [
   "Other / General Consultation",
 ];
 
+const locations = ["Kolkata", "Dankuni", "Siliguri", "Purulia", "Kalyani"];
+
 type FormValues = AppointmentValues;
 type Errors = Partial<Record<keyof FormValues, string>>;
 
 const emptyValues: FormValues = {
-  name: "", phone: "", email: "", service: "", date: "", time: "", notes: "",
+  name: "", phone: "", email: "", service: "", location: "", date: "", time: "", notes: "",
 };
 
 /**
@@ -105,6 +107,12 @@ export function AppointmentForm() {
         <select value={values.service} onChange={onChange("service")} className={inputCls}>
           <option value="">Select a service</option>
           {services.map((s) => <option key={s} value={s}>{s}</option>)}
+        </select>
+      </Field>
+      <Field label="Preferred location" error={errors.location}>
+        <select value={values.location} onChange={onChange("location")} className={inputCls}>
+          <option value="">Select a location</option>
+          {locations.map((l) => <option key={l} value={l}>{l}</option>)}
         </select>
       </Field>
       <div className="grid sm:grid-cols-2 gap-5">
