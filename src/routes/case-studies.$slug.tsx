@@ -1,9 +1,10 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, lazyRouteComponent } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Stethoscope, Calendar, User, ClipboardList, Activity, CheckCircle2, BookOpen } from "lucide-react";
-import { useState } from "react";
+import { useState, useMemo, memo } from "react";
 import { getCaseStudy, caseStudies, type CaseStudy } from "@/lib/case-studies";
 
 export const Route = createFileRoute("/case-studies/$slug")({
+  component: lazyRouteComponent(() => import("./case-studies.$slug").then((m) => m.CaseDetail)),
   loader: ({ params }): CaseStudy => {
     const study = getCaseStudy(params.slug);
     if (!study) throw notFound();
@@ -33,13 +34,15 @@ export const Route = createFileRoute("/case-studies/$slug")({
       <button onClick={reset} className="text-primary">Try again</button>
     </div>
   ),
-  component: CaseDetail,
 });
 
 function CaseDetail() {
   const study = Route.useLoaderData() as CaseStudy;
   const [lightbox, setLightbox] = useState<number | null>(null);
-  const next = caseStudies[(caseStudies.findIndex((c) => c.slug === study.slug) + 1) % caseStudies.length];
+  const next = useMemo(
+    () => caseStudies[(caseStudies.findIndex((c) => c.slug === study.slug) + 1) % caseStudies.length],
+    [study.slug]
+  );
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -88,17 +91,7 @@ function CaseDetail() {
           <Section icon={BookOpen} label="Clinical Gallery" title="Imaging & operative views">
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {study.gallery.map((g, i) => (
-                <button
-                  key={i}
-                  onClick={() => setLightbox(i)}
-                  className="group text-left bg-card border border-border rounded-2xl overflow-hidden hover:-translate-y-1 transition-all"
-                  style={{ boxShadow: "var(--shadow-card)" }}
-                >
-                  <div className="aspect-[4/3] bg-secondary overflow-hidden">
-                    <img src={g.src} alt={g.caption} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  </div>
-                  <p className="text-xs text-muted-foreground p-4 leading-relaxed">{g.caption}</p>
-                </button>
+                <GalleryItem key={i} g={g} i={i} onClick={() => setLightbox(i)} />
               ))}
             </div>
           </Section>
@@ -111,10 +104,7 @@ function CaseDetail() {
               <h3 className="font-semibold mb-3" style={{ color: "var(--navy)" }}>Clinical findings</h3>
               <ul className="space-y-2">
                 {study.diagnosis.findings.map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-sm text-muted-foreground">
-                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
-                    <span>{f}</span>
-                  </li>
+                  <FindingItem key={f} f={f} />
                 ))}
               </ul>
             </div>
@@ -125,10 +115,7 @@ function CaseDetail() {
           </div>
           <div className="mt-6 space-y-3">
             {study.diagnosis.investigations.map((inv) => (
-              <div key={inv.name} className="bg-card border border-border rounded-2xl p-6" style={{ boxShadow: "var(--shadow-card)" }}>
-                <p className="text-xs font-semibold text-primary uppercase tracking-wider">{inv.name}</p>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{inv.result}</p>
-              </div>
+              <InvestigationItem key={inv.name} inv={inv} />
             ))}
           </div>
         </Section>
@@ -138,13 +125,7 @@ function CaseDetail() {
           <ol className="relative space-y-5">
             <div className="absolute left-5 top-2 bottom-2 w-px bg-border hidden sm:block" />
             {study.treatment.map((t, i) => (
-              <li key={t.step} className="relative sm:pl-16 bg-card border border-border rounded-2xl p-6" style={{ boxShadow: "var(--shadow-card)" }}>
-                <div className="hidden sm:flex absolute left-0 top-5 h-10 w-10 rounded-full text-primary-foreground items-center justify-center text-sm font-semibold" style={{ background: "var(--gradient-cta)" }}>
-                  {i + 1}
-                </div>
-                <h3 className="font-semibold" style={{ color: "var(--navy)" }}>{t.step}</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{t.detail}</p>
-              </li>
+              <TreatmentStep key={t.step} t={t} i={i} />
             ))}
           </ol>
         </Section>
@@ -153,12 +134,7 @@ function CaseDetail() {
         <Section icon={CheckCircle2} label="Outcomes" title="Post-operative results">
           <div className="grid sm:grid-cols-2 gap-4">
             {study.outcomes.map((o) => (
-              <div key={o} className="flex items-start gap-3 bg-card border border-border rounded-2xl p-5" style={{ boxShadow: "var(--shadow-card)" }}>
-                <div className="h-9 w-9 rounded-lg bg-secondary text-primary flex items-center justify-center shrink-0">
-                  <CheckCircle2 className="h-5 w-5" />
-                </div>
-                <p className="text-sm font-medium leading-relaxed" style={{ color: "var(--navy)" }}>{o}</p>
-              </div>
+              <OutcomeItem key={o} o={o} />
             ))}
           </div>
         </Section>
@@ -207,7 +183,7 @@ function CaseDetail() {
   );
 }
 
-function Section({ icon: Icon, label, title, children }: { icon: any; label: string; title: string; children: React.ReactNode }) {
+const Section = memo(function Section({ icon: Icon, label, title, children }: { icon: any; label: string; title: string; children: React.ReactNode }) {
   return (
     <section>
       <div className="flex items-center gap-3 mb-6">
@@ -222,9 +198,9 @@ function Section({ icon: Icon, label, title, children }: { icon: any; label: str
       {children}
     </section>
   );
-}
+});
 
-function Meta({ icon: Icon, label, value }: { icon: any; label: string; value: string }) {
+const Meta = memo(function Meta({ icon: Icon, label, value }: { icon: any; label: string; value: string }) {
   return (
     <div className="bg-background/70 border border-border rounded-2xl p-4 backdrop-blur">
       <div className="flex items-center gap-2 text-xs font-semibold text-primary uppercase tracking-wider">
@@ -234,4 +210,61 @@ function Meta({ icon: Icon, label, value }: { icon: any; label: string; value: s
       <p className="mt-1.5 text-sm font-medium" style={{ color: "var(--navy)" }}>{value}</p>
     </div>
   );
-}
+});
+
+const GalleryItem = memo(function GalleryItem({ g, i, onClick }: { g: { src: string; caption: string }; i: number; onClick: () => void }) {
+  return (
+    <button
+      key={i}
+      onClick={onClick}
+      className="group text-left bg-card border border-border rounded-2xl overflow-hidden hover:-translate-y-1 transition-all"
+      style={{ boxShadow: "var(--shadow-card)" }}
+    >
+      <div className="aspect-[4/3] bg-secondary overflow-hidden">
+        <img src={g.src} alt={g.caption} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+      </div>
+      <p className="text-xs text-muted-foreground p-4 leading-relaxed">{g.caption}</p>
+    </button>
+  );
+});
+
+const FindingItem = memo(function FindingItem({ f }: { f: string }) {
+  return (
+    <li key={f} className="flex items-start gap-2 text-sm text-muted-foreground">
+      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
+      <span>{f}</span>
+    </li>
+  );
+});
+
+const InvestigationItem = memo(function InvestigationItem({ inv }: { inv: { name: string; result: string } }) {
+  return (
+    <div key={inv.name} className="bg-card border border-border rounded-2xl p-6" style={{ boxShadow: "var(--shadow-card)" }}>
+      <p className="text-xs font-semibold text-primary uppercase tracking-wider">{inv.name}</p>
+      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{inv.result}</p>
+    </div>
+  );
+});
+
+const TreatmentStep = memo(function TreatmentStep({ t, i }: { t: { step: string; detail: string }; i: number }) {
+  return (
+    <li key={t.step} className="relative sm:pl-16 bg-card border border-border rounded-2xl p-6" style={{ boxShadow: "var(--shadow-card)" }}>
+      <div className="hidden sm:flex absolute left-0 top-5 h-10 w-10 rounded-full text-primary-foreground items-center justify-center text-sm font-semibold" style={{ background: "var(--gradient-cta)" }}>
+        {i + 1}
+      </div>
+      <h3 className="font-semibold" style={{ color: "var(--navy)" }}>{t.step}</h3>
+      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{t.detail}</p>
+    </li>
+  );
+});
+
+const OutcomeItem = memo(function OutcomeItem({ o }: { o: string }) {
+  return (
+    <div key={o} className="flex items-start gap-3 bg-card border border-border rounded-2xl p-5" style={{ boxShadow: "var(--shadow-card)" }}>
+      <div className="h-9 w-9 rounded-lg bg-secondary text-primary flex items-center justify-center shrink-0">
+        <CheckCircle2 className="h-5 w-5" />
+      </div>
+      <p className="text-sm font-medium leading-relaxed" style={{ color: "var(--navy)" }}>{o}</p>
+    </div>
+  );
+});

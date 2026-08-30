@@ -206,3 +206,19 @@
     animation: none !important;
   }
 }
+
+/* Content visibility for off-screen sections - improves rendering performance */
+section[id] {
+  content-visibility: auto;
+  contain-intrinsic-size: 1000px;
+}
+
+/* Reduce paint area for fixed/sticky elements */
+.sticky {
+  will-change: transform;
+}
+
+/* Optimize image rendering */
+img {
+  content-visibility: auto;
+}

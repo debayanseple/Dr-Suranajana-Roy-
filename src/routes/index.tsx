@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, lazyRouteComponent } from "@tanstack/react-router";
 import {
   Stethoscope,
   Scissors,
@@ -18,7 +18,7 @@ import {
   Menu,
   type LucideIcon,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo, useCallback, memo } from "react";
 import heroImg from "@/assets/dr-suranjana-hero.jpg";
 import { AppointmentForm } from "@/components/appointment-form";
 import {
@@ -49,7 +49,7 @@ export const Route = createFileRoute("/")({
       },
     ],
   }),
-  component: Index,
+  component: lazyRouteComponent(() => import("./index").then((m) => m.Index)),
 });
 
 const services = [
@@ -105,6 +105,65 @@ const publications = [
   },
 ];
 
+// Memoized components to prevent re-renders
+const Card = memo(function Card({
+  icon: Icon,
+  title,
+  sub,
+  meta,
+}: {
+  icon: LucideIcon;
+  title: string;
+  sub: string;
+  meta: string;
+}) {
+  return (
+    <div
+      className="bg-card p-6 rounded-2xl border border-border flex items-start gap-4"
+      style={{ boxShadow: "var(--shadow-card)" }}
+    >
+      <div className="h-12 w-12 rounded-xl bg-secondary flex items-center justify-center shrink-0">
+        <Icon className="h-6 w-6 text-primary" strokeWidth={1.5} />
+      </div>
+      <div className="flex-1">
+        <h3 className="font-semibold" style={{ color: "var(--navy)" }}>
+          {title}
+        </h3>
+        <p className="text-sm text-muted-foreground mt-1">{sub}</p>
+        <p className="text-xs text-primary font-medium mt-1">{meta}</p>
+      </div>
+    </div>
+  );
+});
+
+const ContactItem = memo(function ContactItem({
+  icon: Icon,
+  title,
+  lines,
+}: {
+  icon: LucideIcon;
+  title: string;
+  lines: string[];
+}) {
+  return (
+    <div>
+      <div className="flex items-center gap-2 mb-3">
+        <Icon className="h-4 w-4 text-white/70" />
+        <h4 className="font-semibold text-sm uppercase tracking-wider text-white/90">
+          {title}
+        </h4>
+      </div>
+      <div className="space-y-1">
+        {lines.map((l) => (
+          <p key={l} className="text-sm text-white/70">
+            {l}
+          </p>
+        ))}
+      </div>
+    </div>
+  );
+});
+
 function Index() {
   const [open, setOpen] = useState(false);
   const [appointmentOpen, setAppointmentOpen] = useState(false);
@@ -114,14 +173,14 @@ function Index() {
     setAppointmentOpen(true);
   }, []);
 
-  const nav: { href: string; label: string; to: "/case-studies" | null }[] = [
+  const nav = useMemo(() => [
     { href: "#home", label: "Home", to: null },
     { href: "#about", label: "About", to: null },
     { href: "#services", label: "Services", to: null },
     { href: "/case-studies", label: "Case Studies", to: "/case-studies" },
     { href: "#academic", label: "Academic Work", to: null },
     { href: "#contact", label: "Contact", to: null },
-  ];
+  ], []);
 
   return (
     <div className="min-h-screen bg-background text-foreground scroll-smooth">
@@ -271,6 +330,9 @@ function Index() {
               width={1024}
               height={1216}
               fetchPriority="high"
+              loading="eager"
+              decoding="async"
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="relative w-full h-auto object-contain rounded-3xl"
               style={{ boxShadow: "var(--shadow-card-hover)" }}
             />
@@ -298,27 +360,7 @@ function Index() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((s) => (
-              <div
-                key={s.title}
-                className="group bg-card p-8 rounded-2xl border border-border transition-all hover:-translate-y-1"
-                style={{ boxShadow: "var(--shadow-card)" }}
-              >
-                <div className="h-14 w-14 rounded-2xl bg-secondary flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                  <s.icon
-                    className="h-7 w-7 text-primary group-hover:text-primary-foreground"
-                    strokeWidth={1.5}
-                  />
-                </div>
-                <h3
-                  className="text-lg font-semibold mb-2"
-                  style={{ color: "var(--navy)" }}
-                >
-                  {s.title}
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {s.desc}
-                </p>
-              </div>
+              <ServiceCard key={s.title} service={s} />
             ))}
           </div>
         </div>
@@ -390,28 +432,8 @@ function Index() {
           <div className="relative">
             <div className="absolute left-6 top-0 bottom-0 w-px bg-border hidden sm:block" />
             <div className="space-y-6">
-              {publications.map((p) => (
-                <div
-                  key={p.title}
-                  className="relative sm:pl-16 bg-card p-6 sm:p-7 rounded-2xl border border-border"
-                  style={{ boxShadow: "var(--shadow-card)" }}
-                >
-                  <div
-                    className="hidden sm:flex absolute left-0 top-6 h-12 w-12 rounded-full bg-primary text-primary-foreground items-center justify-center"
-                    style={{ background: "var(--gradient-cta)" }}
-                  >
-                    <p.icon className="h-5 w-5" />
-                  </div>
-                  <p className="text-xs font-semibold text-primary uppercase tracking-wider">
-                    {p.type}
-                  </p>
-                  <h3
-                    className="mt-2 text-lg font-semibold leading-snug"
-                    style={{ color: "var(--navy)" }}
-                  >
-                    {p.title}
-                  </h3>
-                </div>
+              {publications.map((pub) => (
+                <PublicationItem key={pub.title} pub={pub} />
               ))}
             </div>
           </div>
@@ -504,60 +526,53 @@ function Index() {
   );
 }
 
-function Card({
-  icon: Icon,
-  title,
-  sub,
-  meta,
-}: {
-  icon: LucideIcon;
-  title: string;
-  sub: string;
-  meta: string;
-}) {
+const ServiceCard = memo(function ServiceCard({ service }: { service: typeof services[0] }) {
   return (
     <div
-      className="bg-card p-6 rounded-2xl border border-border flex items-start gap-4"
+      className="group bg-card p-8 rounded-2xl border border-border transition-all hover:-translate-y-1"
       style={{ boxShadow: "var(--shadow-card)" }}
     >
-      <div className="h-12 w-12 rounded-xl bg-secondary flex items-center justify-center shrink-0">
-        <Icon className="h-6 w-6 text-primary" strokeWidth={1.5} />
+      <div className="h-14 w-14 rounded-2xl bg-secondary flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+        <service.icon
+          className="h-7 w-7 text-primary group-hover:text-primary-foreground"
+          strokeWidth={1.5}
+        />
       </div>
-      <div className="flex-1">
-        <h3 className="font-semibold" style={{ color: "var(--navy)" }}>
-          {title}
-        </h3>
-        <p className="text-sm text-muted-foreground mt-1">{sub}</p>
-        <p className="text-xs text-primary font-medium mt-1">{meta}</p>
-      </div>
+      <h3
+        className="text-lg font-semibold mb-2"
+        style={{ color: "var(--navy)" }}
+      >
+        {service.title}
+      </h3>
+      <p className="text-sm text-muted-foreground leading-relaxed">
+        {service.desc}
+      </p>
     </div>
   );
-}
+});
 
-function ContactItem({
-  icon: Icon,
-  title,
-  lines,
-}: {
-  icon: LucideIcon;
-  title: string;
-  lines: string[];
-}) {
+const PublicationItem = memo(function PublicationItem({ pub }: { pub: typeof publications[0] }) {
   return (
-    <div>
-      <div className="flex items-center gap-2 mb-3">
-        <Icon className="h-4 w-4 text-white/70" />
-        <h4 className="font-semibold text-sm uppercase tracking-wider text-white/90">
-          {title}
-        </h4>
+    <div
+      key={pub.title}
+      className="relative sm:pl-16 bg-card p-6 sm:p-7 rounded-2xl border border-border"
+      style={{ boxShadow: "var(--shadow-card)" }}
+    >
+      <div
+        className="hidden sm:flex absolute left-0 top-6 h-12 w-12 rounded-full bg-primary text-primary-foreground items-center justify-center"
+        style={{ background: "var(--gradient-cta)" }}
+      >
+        <pub.icon className="h-5 w-5" />
       </div>
-      <div className="space-y-1">
-        {lines.map((l) => (
-          <p key={l} className="text-sm text-white/70">
-            {l}
-          </p>
-        ))}
-      </div>
+      <p className="text-xs font-semibold text-primary uppercase tracking-wider">
+        {pub.type}
+      </p>
+      <h3
+        className="mt-2 text-lg font-semibold leading-snug"
+        style={{ color: "var(--navy)" }}
+      >
+        {pub.title}
+      </h3>
     </div>
   );
-}
+});

@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, lazyRouteComponent } from "@tanstack/react-router";
 import { ArrowLeft, Stethoscope, Phone, Mail, MapPin } from "lucide-react";
 
 import { AppointmentForm } from "@/components/appointment-form";
@@ -12,7 +12,7 @@ export const Route = createFileRoute("/book-appointment")({
       { property: "og:description", content: "Schedule a consultation with Dr. Suranjana Roy." },
     ],
   }),
-  component: BookAppointment,
+  component: lazyRouteComponent(() => import("./book-appointment").then((m) => m.BookAppointment)),
 });
 
 function BookAppointment() {
