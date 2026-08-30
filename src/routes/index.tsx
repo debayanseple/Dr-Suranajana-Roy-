@@ -1,4 +1,4 @@
-import { createFileRoute, Link, lazyRouteComponent } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Stethoscope,
   Scissors,
@@ -49,7 +49,7 @@ export const Route = createFileRoute("/")({
       },
     ],
   }),
-  component: lazyRouteComponent(() => import("./index").then((m) => m.Index)),
+  component: Index,
 });
 
 const services = [

@@ -1,10 +1,10 @@
-import { createFileRoute, Link, notFound, lazyRouteComponent } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Stethoscope, Calendar, User, ClipboardList, Activity, CheckCircle2, BookOpen } from "lucide-react";
 import { useState, useMemo, memo } from "react";
 import { getCaseStudy, caseStudies, type CaseStudy } from "@/lib/case-studies";
 
 export const Route = createFileRoute("/case-studies/$slug")({
-  component: lazyRouteComponent(() => import("./case-studies.$slug").then((m) => m.CaseDetail)),
+  component: CaseDetail,
   loader: ({ params }): CaseStudy => {
     const study = getCaseStudy(params.slug);
     if (!study) throw notFound();

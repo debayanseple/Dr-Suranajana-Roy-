@@ -1,4 +1,4 @@
-import { createFileRoute, Link, lazyRouteComponent } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Stethoscope } from "lucide-react";
 import { caseStudies } from "@/lib/case-studies";
 
@@ -11,7 +11,7 @@ export const Route = createFileRoute("/case-studies/")({
       { property: "og:description", content: "Selected clinical cases in oral & maxillofacial surgery." },
     ],
   }),
-  component: lazyRouteComponent(() => import("./case-studies.index").then((m) => m.CaseStudies)),
+  component: CaseStudies,
 });
 
 function CaseStudies() {

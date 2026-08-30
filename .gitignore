@@ -5,3 +5,4 @@ dist
 .tanstack
 .claude
 .vercel
+.output
