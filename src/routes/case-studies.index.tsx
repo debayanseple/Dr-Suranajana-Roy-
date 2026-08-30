@@ -55,7 +55,7 @@ function CaseStudies() {
             >
               {c.gallery[0] && (
                 <div className="mb-6 -mx-2 -mt-2 rounded-2xl overflow-hidden aspect-[16/10] bg-secondary">
-                  <img src={c.gallery[0].src} alt={c.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <img src={c.gallery[0].src} alt={`${c.title} — head & neck surgery case study by Dr. Suranjana Roy, onco surgeon and maxillofacial specialist in Kolkata & Siliguri`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
               )}
               <div className="flex items-center gap-3 mb-3">

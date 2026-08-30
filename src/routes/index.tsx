@@ -32,7 +32,10 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Dr. Suranjana Roy | Onco Surgeon & Maxillofacial Specialist in Kolkata & Siliguri" },
+      {
+        title:
+          "Dr. Suranjana Roy | Onco Surgeon & Maxillofacial Specialist in Kolkata & Siliguri",
+      },
       {
         name: "description",
         content:
@@ -191,14 +194,17 @@ function Index() {
     setAppointmentOpen(true);
   }, []);
 
-  const nav = useMemo(() => [
-    { href: "#home", label: "Home", to: null },
-    { href: "#about", label: "About", to: null },
-    { href: "#services", label: "Services", to: null },
-    { href: "/case-studies", label: "Case Studies", to: "/case-studies" },
-    { href: "#academic", label: "Academic Work", to: null },
-    { href: "#contact", label: "Contact", to: null },
-  ], []);
+  const nav = useMemo(
+    () => [
+      { href: "#home", label: "Home", to: null },
+      { href: "#about", label: "About", to: null },
+      { href: "#services", label: "Services", to: null },
+      { href: "/case-studies", label: "Case Studies", to: "/case-studies" },
+      { href: "#academic", label: "Academic Work", to: null },
+      { href: "#contact", label: "Contact", to: null },
+    ],
+    [],
+  );
 
   return (
     <div className="min-h-screen bg-background text-foreground scroll-smooth">
@@ -345,7 +351,7 @@ function Index() {
           <div className="relative">
             <img
               src={heroImg}
-              alt="Dr. Suranjana Roy, Oral & Maxillofacial Surgeon"
+              alt="Dr. Suranjana Roy, Oral & Maxillofacial Surgeon and head & neck onco surgeon (cancer doctor) consulting patients in Kolkata and Siliguri, West Bengal"
               width={1024}
               height={1216}
               fetchPriority="high"
@@ -578,7 +584,11 @@ function Index() {
   );
 }
 
-const ServiceCard = memo(function ServiceCard({ service }: { service: typeof services[0] }) {
+const ServiceCard = memo(function ServiceCard({
+  service,
+}: {
+  service: (typeof services)[0];
+}) {
   const body = (
     <>
       <div className="h-14 w-14 rounded-2xl bg-secondary flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
@@ -621,7 +631,11 @@ const ServiceCard = memo(function ServiceCard({ service }: { service: typeof ser
   );
 });
 
-const PublicationItem = memo(function PublicationItem({ pub }: { pub: typeof publications[0] }) {
+const PublicationItem = memo(function PublicationItem({
+  pub,
+}: {
+  pub: (typeof publications)[0];
+}) {
   return (
     <div
       key={pub.title}

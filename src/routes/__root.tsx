@@ -19,7 +19,9 @@ function NotFoundComponent() {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">
+          Page not found
+        </h2>
         <p className="mt-2 text-sm text-muted-foreground">
           The page you're looking for doesn't exist or has been moved.
         </p>
@@ -50,7 +52,8 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
           This page didn't load
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+          Something went wrong on our end. You can try refreshing or head back
+          home.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
@@ -74,64 +77,87 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Dr. Suranjana Roy | Onco Surgeon & Maxillofacial Specialist in Kolkata & Siliguri" },
-      { name: "description", content: "Consult Dr. Suranjana Roy, an expert Oral & Maxillofacial Surgeon and Cancer Doctor in Kolkata and Siliguri, specializing in head and neck oncosurgery and jaw reconstruction." },
-      { name: "author", content: "Dr. Suranjana Roy" },
-      { property: "og:title", content: "Dr. Suranjana Roy — Oral & Maxillofacial Surgeon" },
-      { property: "og:description", content: "Specialist care in oral surgery, head & neck oncosurgery and comprehensive dentistry." },
-      { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "Dr. Suranjana Roy" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:title", content: "Dr. Suranjana Roy — Oral & Maxillofacial Surgeon" },
-      { name: "twitter:description", content: "Specialist care in oral surgery, head & neck oncosurgery and comprehensive dentistry." },
-    ],
-    links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-    ],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Physician",
-          name: "Dr. Suranjana Roy",
-          medicalSpecialty: ["OralAndMaxillofacialSurgery", "Oncologic"],
-          url: "https://dr-suranjana-roy.vercel.app/",
-          telephone: "+91-7980103899",
-          email: "drsuranjanaroy@gmail.com",
-          address: [
-            {
-              "@type": "PostalAddress",
-              addressLocality: "Siliguri",
-              addressRegion: "West Bengal",
-              postalCode: "734011",
-              addressCountry: "IN",
-            },
-            {
-              "@type": "PostalAddress",
-              addressLocality: "Jadavpur",
-              addressRegion: "Kolkata, West Bengal",
-              addressCountry: "IN",
-            },
-          ],
-          areaServed: ["Siliguri", "Kolkata", "West Bengal"],
-        }),
-      },
-    ],
-  }),
-  shellComponent: RootShell,
-  component: RootComponent,
-  notFoundComponent: NotFoundComponent,
-  errorComponent: ErrorComponent,
-});
+export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
+  {
+    head: () => ({
+      meta: [
+        { charSet: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        {
+          title:
+            "Dr. Suranjana Roy | Onco Surgeon & Maxillofacial Specialist in Kolkata & Siliguri",
+        },
+        {
+          name: "description",
+          content:
+            "Consult Dr. Suranjana Roy, an expert Oral & Maxillofacial Surgeon and Cancer Doctor in Kolkata and Siliguri, specializing in head and neck oncosurgery and jaw reconstruction.",
+        },
+        { name: "author", content: "Dr. Suranjana Roy" },
+        {
+          property: "og:title",
+          content: "Dr. Suranjana Roy — Oral & Maxillofacial Surgeon",
+        },
+        {
+          property: "og:description",
+          content:
+            "Specialist care in oral surgery, head & neck oncosurgery and comprehensive dentistry.",
+        },
+        { property: "og:type", content: "website" },
+        { property: "og:site_name", content: "Dr. Suranjana Roy" },
+        { name: "twitter:card", content: "summary" },
+        {
+          name: "twitter:title",
+          content: "Dr. Suranjana Roy — Oral & Maxillofacial Surgeon",
+        },
+        {
+          name: "twitter:description",
+          content:
+            "Specialist care in oral surgery, head & neck oncosurgery and comprehensive dentistry.",
+        },
+      ],
+      links: [
+        {
+          rel: "stylesheet",
+          href: appCss,
+        },
+      ],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Physician",
+            name: "Dr. Suranjana Roy",
+            medicalSpecialty: ["OralAndMaxillofacialSurgery", "Oncologic"],
+            url: "https://dr-suranjana-roy.vercel.app/",
+            telephone: "+91-7980103899",
+            email: "drsuranjanaroy@gmail.com",
+            address: [
+              {
+                "@type": "PostalAddress",
+                addressLocality: "Siliguri",
+                addressRegion: "West Bengal",
+                postalCode: "734011",
+                addressCountry: "IN",
+              },
+              {
+                "@type": "PostalAddress",
+                addressLocality: "Jadavpur",
+                addressRegion: "Kolkata, West Bengal",
+                addressCountry: "IN",
+              },
+            ],
+            areaServed: ["Siliguri", "Kolkata", "West Bengal"],
+          }),
+        },
+      ],
+    }),
+    shellComponent: RootShell,
+    component: RootComponent,
+    notFoundComponent: NotFoundComponent,
+    errorComponent: ErrorComponent,
+  },
+);
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
@@ -139,13 +165,26 @@ function RootShell({ children }: { children: ReactNode }) {
       <head>
         {/* Preload critical fonts and resources */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" media="print" onLoad="this.media='all'" />
-        
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          as="style"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+          media="print"
+          onLoad="this.media='all'"
+        />
+
         {/* Preload hero image */}
         <link rel="preload" as="image" href={heroImg} fetchPriority="high" />
-        
+
         <HeadContent />
       </head>
       <body>

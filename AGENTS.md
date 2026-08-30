@@ -7,6 +7,7 @@
 - `npm run preview` — Preview production build
 - `npm run lint` — ESLint (includes Prettier via plugin)
 - `npm run format` — Prettier write
+- `npm run lint -- <path>` — Lint a single file
 
 ## Key Conventions
 - **Node 22.x required** (`engines` in package.json)
@@ -15,6 +16,7 @@
 - **Server-only code**: Use `.server.ts` suffix or `@tanstack/react-start/server-only` directive (ESLint blocks `server-only` pkg)
 - **Env vars**: `BOOKING_WEBHOOK_URL` (server-only, no `VITE_` prefix). Create `.env` locally.
 - **Vercel deployment**: `NITRO_PRESET=vercel` (default in vite.config.ts). Override with env var if needed.
+- **New pages**: every route file exports `head()` (title, meta description, OG tags) — follow the pattern in existing routes. `src/routes/README.md` has the file-naming conventions.
 
 ## Architecture
 - **Framework**: TanStack Start (full-stack React) + TanStack Router (file-based routes)
@@ -48,9 +50,12 @@ src/
 │   ├── index.tsx        # Home
 │   ├── book-appointment.tsx
 │   ├── case-studies.index.tsx
-│   └── case-studies.$slug.tsx
+│   ├── case-studies.$slug.tsx
+│   └── services.<name>.tsx  # Service pages → /services/<name>
 ├── router.tsx           # Router factory + QueryClient
 ├── server.ts            # SSR entry + error normalization
 ├── start.ts             # Client entry
 └── styles.css           # Tailwind v4 entry
 ```
+
+`scripts/apps-script/booking-webhook.gs` is the Google Apps Script that `BOOKING_WEBHOOK_URL` points at.

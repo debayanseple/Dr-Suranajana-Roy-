@@ -5,7 +5,8 @@ export const Route = createFileRoute("/services/head-and-neck-oncosurgery")({
   head: () => ({
     meta: [
       {
-        title: "Head & Neck Oncosurgery in Kolkata & Siliguri | Dr. Suranjana Roy",
+        title:
+          "Head & Neck Oncosurgery in Kolkata & Siliguri | Dr. Suranjana Roy",
       },
       {
         name: "description",
@@ -148,7 +149,10 @@ function HeadNeckOncosurgery() {
             className="rounded-3xl p-10 relative overflow-hidden"
             style={{ background: "var(--gradient-hero)" }}
           >
-            <h3 className="text-2xl md:text-3xl font-bold" style={{ color: "var(--navy)" }}>
+            <h3
+              className="text-2xl md:text-3xl font-bold"
+              style={{ color: "var(--navy)" }}
+            >
               Concerned about a symptom? Don't wait.
             </h3>
             <p className="mt-3 text-muted-foreground text-lg max-w-xl">

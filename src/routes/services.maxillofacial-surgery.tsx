@@ -5,7 +5,8 @@ export const Route = createFileRoute("/services/maxillofacial-surgery")({
   head: () => ({
     meta: [
       {
-        title: "Oral & Maxillofacial Surgery in Kolkata & Siliguri | Dr. Suranjana Roy",
+        title:
+          "Oral & Maxillofacial Surgery in Kolkata & Siliguri | Dr. Suranjana Roy",
       },
       {
         name: "description",
@@ -107,7 +108,10 @@ function MaxillofacialSurgery() {
             className="rounded-3xl p-10 relative overflow-hidden"
             style={{ background: "var(--gradient-hero)" }}
           >
-            <h3 className="text-2xl md:text-3xl font-bold" style={{ color: "var(--navy)" }}>
+            <h3
+              className="text-2xl md:text-3xl font-bold"
+              style={{ color: "var(--navy)" }}
+            >
               Jaw pain, swelling or a lump that won't settle?
             </h3>
             <p className="mt-3 text-muted-foreground text-lg max-w-xl">
