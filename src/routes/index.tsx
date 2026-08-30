@@ -32,11 +32,11 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Dr. Suranjana Roy — Oral & Maxillofacial Surgeon" },
+      { title: "Dr. Suranjana Roy | Onco Surgeon & Maxillofacial Specialist in Kolkata & Siliguri" },
       {
         name: "description",
         content:
-          "MDS Oral & Maxillofacial Surgeon specializing in head & neck oncosurgery, maxillofacial reconstruction and general dentistry. Siliguri, West Bengal.",
+          "Consult Dr. Suranjana Roy, an expert Oral & Maxillofacial Surgeon and Cancer Doctor in Kolkata and Siliguri, specializing in head and neck oncosurgery and jaw reconstruction.",
       },
       {
         property: "og:title",
@@ -57,11 +57,13 @@ const services = [
     icon: Scissors,
     title: "Oral & Maxillofacial Surgery",
     desc: "Surgical management of conditions affecting the face, jaws, and oral cavity.",
+    href: "/services/maxillofacial-surgery",
   },
   {
     icon: Activity,
     title: "Head & Neck Oncosurgery",
-    desc: "Comprehensive surgical treatment for cancers of the head and neck region.",
+    desc: "Comprehensive surgical treatment for cancers of the head and neck region. Expert care from a dedicated oral cancer doctor.",
+    href: "/services/head-and-neck-oncosurgery",
   },
   {
     icon: Smile,
@@ -82,6 +84,22 @@ const services = [
     icon: Sparkles,
     title: "Aesthetic & Prosthetic Rehabilitation",
     desc: "Cosmetic and prosthetic solutions for a confident, natural smile.",
+  },
+];
+
+// FAQ content for SEO / SGE (Google AI) answer extraction
+const faqs = [
+  {
+    q: "What does a head and neck onco surgeon do?",
+    a: "A head and neck onco surgeon is a cancer specialist who diagnoses and surgically treats tumours of the mouth, jaw, throat, salivary glands and face. Dr. Suranjana Roy, an MDS Oral & Maxillofacial Surgeon, performs cancer removal (resection) of oral and jaw tumours, neck lymph-node dissection, and reconstruction of the jaw and face after tumour removal — restoring both function and appearance.",
+  },
+  {
+    q: "When should I consult an oral cancer doctor?",
+    a: "See an oral cancer doctor promptly if you notice a mouth ulcer that hasn't healed in more than 2–3 weeks, a red or white patch inside the cheek, tongue or gums, a lump in the jaw or neck, loose teeth without gum disease, difficulty or pain when swallowing, unexplained bleeding from the mouth, or numbness of the lip or chin. Early detection dramatically improves outcomes — when in doubt, get it examined.",
+  },
+  {
+    q: "Does Dr. Suranjana Roy consult in Kolkata?",
+    a: "Yes. Dr. Suranjana Roy consults at two locations in West Bengal — Siliguri (Pin 734011) and Jadavpur, Kolkata. You can request an appointment at either location through the Book Appointment form on this site or by calling +91 7980103899.",
   },
 ];
 
@@ -304,8 +322,9 @@ function Index() {
               MDS — Oral & Maxillofacial Surgeon
             </p>
             <p className="mt-5 text-muted-foreground text-lg max-w-xl leading-relaxed">
-              Specialized in head and neck surgical oncology, maxillofacial
-              reconstruction, and comprehensive general dentistry.
+              Specialized in head and neck surgical oncology, providing expert
+              care as an onco surgeon and cancer specialist for the jaw, mouth,
+              and face.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
@@ -440,6 +459,39 @@ function Index() {
         </div>
       </section>
 
+      {/* FAQ */}
+      <section id="faq" className="py-24">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <p className="text-sm font-semibold text-primary uppercase tracking-wider">
+              FAQ
+            </p>
+            <h2
+              className="mt-3 text-4xl md:text-5xl font-bold"
+              style={{ color: "var(--navy)" }}
+            >
+              Frequently asked questions
+            </h2>
+          </div>
+          <div className="space-y-4">
+            {faqs.map((faq) => (
+              <details
+                key={faq.q}
+                className="bg-card rounded-2xl border border-border px-6 py-4"
+                style={{ boxShadow: "var(--shadow-card)" }}
+              >
+                <summary className="cursor-pointer font-semibold text-base sm:text-lg list-none [&::-webkit-details-marker]:hidden">
+                  {faq.q}
+                </summary>
+                <p className="mt-3 text-muted-foreground text-sm sm:text-base leading-relaxed">
+                  {faq.a}
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA banner */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-6">
@@ -527,11 +579,8 @@ function Index() {
 }
 
 const ServiceCard = memo(function ServiceCard({ service }: { service: typeof services[0] }) {
-  return (
-    <div
-      className="group bg-card p-8 rounded-2xl border border-border transition-all hover:-translate-y-1"
-      style={{ boxShadow: "var(--shadow-card)" }}
-    >
+  const body = (
+    <>
       <div className="h-14 w-14 rounded-2xl bg-secondary flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
         <service.icon
           className="h-7 w-7 text-primary group-hover:text-primary-foreground"
@@ -547,6 +596,27 @@ const ServiceCard = memo(function ServiceCard({ service }: { service: typeof ser
       <p className="text-sm text-muted-foreground leading-relaxed">
         {service.desc}
       </p>
+    </>
+  );
+
+  if ("href" in service && service.href) {
+    return (
+      <Link
+        to={service.href}
+        className="group bg-card p-8 rounded-2xl border border-border transition-all hover:-translate-y-1 block"
+        style={{ boxShadow: "var(--shadow-card)" }}
+      >
+        {body}
+      </Link>
+    );
+  }
+
+  return (
+    <div
+      className="group bg-card p-8 rounded-2xl border border-border transition-all hover:-translate-y-1"
+      style={{ boxShadow: "var(--shadow-card)" }}
+    >
+      {body}
     </div>
   );
 });

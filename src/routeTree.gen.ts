@@ -12,6 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as BookAppointmentRouteImport } from './routes/book-appointment'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CaseStudiesIndexRouteImport } from './routes/case-studies.index'
+import { Route as ServicesMaxillofacialSurgeryRouteImport } from './routes/services.maxillofacial-surgery'
+import { Route as ServicesHeadAndNeckOncosurgeryRouteImport } from './routes/services.head-and-neck-oncosurgery'
 import { Route as CaseStudiesSlugRouteImport } from './routes/case-studies.$slug'
 
 const BookAppointmentRoute = BookAppointmentRouteImport.update({
@@ -29,6 +31,18 @@ const CaseStudiesIndexRoute = CaseStudiesIndexRouteImport.update({
   path: '/case-studies/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesMaxillofacialSurgeryRoute =
+  ServicesMaxillofacialSurgeryRouteImport.update({
+    id: '/services/maxillofacial-surgery',
+    path: '/services/maxillofacial-surgery',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesHeadAndNeckOncosurgeryRoute =
+  ServicesHeadAndNeckOncosurgeryRouteImport.update({
+    id: '/services/head-and-neck-oncosurgery',
+    path: '/services/head-and-neck-oncosurgery',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const CaseStudiesSlugRoute = CaseStudiesSlugRouteImport.update({
   id: '/case-studies/$slug',
   path: '/case-studies/$slug',
@@ -39,12 +53,16 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/book-appointment': typeof BookAppointmentRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
+  '/services/head-and-neck-oncosurgery': typeof ServicesHeadAndNeckOncosurgeryRoute
+  '/services/maxillofacial-surgery': typeof ServicesMaxillofacialSurgeryRoute
   '/case-studies/': typeof CaseStudiesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/book-appointment': typeof BookAppointmentRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
+  '/services/head-and-neck-oncosurgery': typeof ServicesHeadAndNeckOncosurgeryRoute
+  '/services/maxillofacial-surgery': typeof ServicesMaxillofacialSurgeryRoute
   '/case-studies': typeof CaseStudiesIndexRoute
 }
 export interface FileRoutesById {
@@ -52,6 +70,8 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/book-appointment': typeof BookAppointmentRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
+  '/services/head-and-neck-oncosurgery': typeof ServicesHeadAndNeckOncosurgeryRoute
+  '/services/maxillofacial-surgery': typeof ServicesMaxillofacialSurgeryRoute
   '/case-studies/': typeof CaseStudiesIndexRoute
 }
 export interface FileRouteTypes {
@@ -60,14 +80,24 @@ export interface FileRouteTypes {
     | '/'
     | '/book-appointment'
     | '/case-studies/$slug'
+    | '/services/head-and-neck-oncosurgery'
+    | '/services/maxillofacial-surgery'
     | '/case-studies/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/book-appointment' | '/case-studies/$slug' | '/case-studies'
+  to:
+    | '/'
+    | '/book-appointment'
+    | '/case-studies/$slug'
+    | '/services/head-and-neck-oncosurgery'
+    | '/services/maxillofacial-surgery'
+    | '/case-studies'
   id:
     | '__root__'
     | '/'
     | '/book-appointment'
     | '/case-studies/$slug'
+    | '/services/head-and-neck-oncosurgery'
+    | '/services/maxillofacial-surgery'
     | '/case-studies/'
   fileRoutesById: FileRoutesById
 }
@@ -75,6 +105,8 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BookAppointmentRoute: typeof BookAppointmentRoute
   CaseStudiesSlugRoute: typeof CaseStudiesSlugRoute
+  ServicesHeadAndNeckOncosurgeryRoute: typeof ServicesHeadAndNeckOncosurgeryRoute
+  ServicesMaxillofacialSurgeryRoute: typeof ServicesMaxillofacialSurgeryRoute
   CaseStudiesIndexRoute: typeof CaseStudiesIndexRoute
 }
 
@@ -101,6 +133,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CaseStudiesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/maxillofacial-surgery': {
+      id: '/services/maxillofacial-surgery'
+      path: '/services/maxillofacial-surgery'
+      fullPath: '/services/maxillofacial-surgery'
+      preLoaderRoute: typeof ServicesMaxillofacialSurgeryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/head-and-neck-oncosurgery': {
+      id: '/services/head-and-neck-oncosurgery'
+      path: '/services/head-and-neck-oncosurgery'
+      fullPath: '/services/head-and-neck-oncosurgery'
+      preLoaderRoute: typeof ServicesHeadAndNeckOncosurgeryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/case-studies/$slug': {
       id: '/case-studies/$slug'
       path: '/case-studies/$slug'
@@ -115,6 +161,8 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BookAppointmentRoute: BookAppointmentRoute,
   CaseStudiesSlugRoute: CaseStudiesSlugRoute,
+  ServicesHeadAndNeckOncosurgeryRoute: ServicesHeadAndNeckOncosurgeryRoute,
+  ServicesMaxillofacialSurgeryRoute: ServicesMaxillofacialSurgeryRoute,
   CaseStudiesIndexRoute: CaseStudiesIndexRoute,
 }
 export const routeTree = rootRouteImport
