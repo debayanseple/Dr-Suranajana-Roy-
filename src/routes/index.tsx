@@ -8,7 +8,6 @@ import {
   Wrench,
   Phone,
   Mail,
-  MapPin,
   BadgeCheck,
   GraduationCap,
   Building2,
@@ -18,8 +17,9 @@ import {
   Menu,
   type LucideIcon,
 } from "lucide-react";
-import { useEffect, useState, useMemo, useCallback, memo } from "react";
-import heroImg from "@/assets/dr-suranjana-hero.jpg";
+import { useEffect, useState, useMemo, memo, useRef } from "react";
+import heroImg from "@/assets/dr-suranjana-main.png";
+import bannerImg from "@/assets/her-banner.jpg";
 import { AppointmentForm } from "@/components/appointment-form";
 import {
   Dialog,
@@ -194,13 +194,31 @@ function Index() {
     setAppointmentOpen(true);
   }, []);
 
+  const heroBgRef = useRef<HTMLDivElement>(null);
+  // Parallax: hero background scrolls slower than the foreground (vanilla JS).
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let raf = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        if (heroBgRef.current)
+          heroBgRef.current.style.transform = `translateY(${window.scrollY * 0.35}px)`;
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
   const nav = useMemo(
     () => [
       { href: "#home", label: "Home", to: null },
       { href: "#about", label: "About", to: null },
       { href: "#services", label: "Services", to: null },
       { href: "/case-studies", label: "Case Studies", to: "/case-studies" },
-      { href: "#academic", label: "Academic Work", to: null },
       { href: "#contact", label: "Contact", to: null },
     ],
     [],
@@ -306,49 +324,36 @@ function Index() {
         )}
       </header>
 
-      {/* Hero */}
+      {/* Hero — parallax background, doctor image on the left */}
       <section
         id="home"
-        className="relative overflow-hidden"
-        style={{ background: "var(--gradient-hero)" }}
+        className="relative overflow-hidden min-h-[calc(100svh-4rem)] flex items-end"
+        style={{ background: "oklch(0.24 0.055 260)" }}
       >
-        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-primary/10 blur-3xl" />
-        <div className="max-w-7xl mx-auto px-6 pt-5 pb-14 md:pt-7 md:pb-20 grid md:grid-cols-2 gap-12 items-center relative">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-background/70 border border-border text-xs font-medium text-primary mb-6">
-              <BadgeCheck className="h-4 w-4" /> WBDC Reg. No. 7324-A
-            </div>
-            <h1
-              className="text-5xl md:text-6xl font-bold tracking-tight leading-[1.05]"
-              style={{ color: "var(--navy)" }}
-            >
-              Dr. Suranjana Roy — Oral & Maxillofacial Surgeon
-            </h1>
-            <p className="mt-4 text-xl md:text-2xl font-medium text-primary">
-              MDS — Oral & Maxillofacial Surgeon
-            </p>
-            <p className="mt-5 text-muted-foreground text-lg max-w-xl leading-relaxed">
-              Specialized in head and neck surgical oncology, providing expert
-              care as an onco surgeon and cancer specialist for the jaw, mouth,
-              and face.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                to="/book-appointment"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-primary-foreground font-medium shadow-lg hover:-translate-y-0.5 transition"
-                style={{ background: "var(--gradient-cta)" }}
-              >
-                Consult Now <ArrowRight className="h-4 w-4" />
-              </Link>
-              <a
-                href="#services"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-background border border-border text-foreground font-medium hover:border-primary hover:text-primary transition"
-              >
-                View Services
-              </a>
-            </div>
-          </div>
-          <div className="relative">
+        <div
+          ref={heroBgRef}
+          className="absolute inset-0 -bottom-[35%] will-change-transform"
+        >
+          <img
+            src={bannerImg}
+            alt=""
+            width={749}
+            height={500}
+            className="h-full w-full object-cover"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(120deg, oklch(0.24 0.055 260 / 0.92), oklch(0.3 0.07 220 / 0.78) 55%, oklch(0.62 0.11 185 / 0.45))",
+            }}
+          />
+        </div>
+        <div className="max-w-7xl mx-auto px-6 pt-14 md:pt-20 grid md:grid-cols-2 gap-12 items-end relative">
+          <div className="relative order-2 md:order-1 flex items-end">
             <img
               src={heroImg}
               alt="Dr. Suranjana Roy, Oral & Maxillofacial Surgeon and head & neck onco surgeon (cancer doctor) consulting patients in Kolkata and Siliguri, West Bengal"
@@ -361,6 +366,40 @@ function Index() {
               className="relative w-full h-auto object-contain rounded-3xl"
               style={{ boxShadow: "var(--shadow-card-hover)" }}
             />
+          </div>
+          <div className="order-1 md:order-2 md:pb-28">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-medium text-white mb-6">
+              <BadgeCheck className="h-4 w-4" /> WBDC Reg. No. 7324-A
+            </div>
+            <h1 className="text-5xl md:text-6xl font-bold tracking-tight leading-[1.05] text-white">
+              We take <span className="text-coral">care</span>
+              <span className="block mt-3 text-xl md:text-2xl font-semibold leading-snug text-white/90">
+                Dr. Suranjana Roy — Oral & Maxillofacial Surgeon
+              </span>
+            </h1>
+            <p className="mt-4 text-lg md:text-xl font-medium text-teal-200">
+              MDS — Oral & Maxillofacial Surgeon
+            </p>
+            <p className="mt-5 text-white/80 text-lg max-w-xl leading-relaxed">
+              Specialized in head and neck surgical oncology, providing expert
+              care as an onco surgeon and cancer specialist for the jaw, mouth,
+              and face.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link
+                to="/book-appointment"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-medium shadow-lg hover:-translate-y-0.5 transition"
+                style={{ background: "var(--gradient-cta)" }}
+              >
+                Consult Now <ArrowRight className="h-4 w-4" />
+              </Link>
+              <a
+                href="#services"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white/10 border border-white/30 text-white font-medium hover:bg-white/20 transition"
+              >
+                View Services
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -438,17 +477,13 @@ function Index() {
             />
           </div>
         </div>
-      </section>
-
-      {/* Academic */}
-      <section id="academic" className="py-24">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="text-center max-w-2xl mx-auto mb-14">
+        <div className="max-w-7xl mx-auto px-6 mt-16">
+          <div className="max-w-2xl mx-auto mb-10 text-center">
             <p className="text-sm font-semibold text-primary uppercase tracking-wider">
               Academic Work
             </p>
             <h2
-              className="mt-3 text-4xl md:text-5xl font-bold"
+              className="mt-3 text-3xl md:text-4xl font-bold"
               style={{ color: "var(--navy)" }}
             >
               Publications & Presentations
@@ -537,8 +572,8 @@ function Index() {
         style={{ background: "var(--navy)" }}
       >
         <div className="max-w-7xl mx-auto px-6 py-20">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-            <div className="lg:col-span-1">
+          <div className="grid md:grid-cols-2 gap-10 md:gap-24">
+            <div>
               <div className="flex items-center gap-2 font-semibold text-lg mb-4">
                 <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/10">
                   <Stethoscope className="h-5 w-5" />
@@ -546,30 +581,50 @@ function Index() {
                 Dr. Suranjana Roy
               </div>
               <p className="text-sm text-white/70 leading-relaxed">
-                Oral & Maxillofacial Surgeon. Compassionate, specialist-led
-                care.
+                MDS — Oral & Maxillofacial Surgeon and consultant Maxillofacial
+                & Head & Neck Oncosurgeon. Specialized in head and neck surgical
+                oncology, maxillofacial pathology and reconstructive care.
+                Evidence-based, patient-first treatment — from early oral cancer
+                screening to complex maxillofacial surgery. Consulting at
+                Siliguri and Jadavpur, Kolkata.
               </p>
             </div>
-            <ContactItem
-              icon={Phone}
-              title="Phone"
-              lines={["+91 7980103899"]}
-            />
-            <ContactItem
-              icon={Mail}
-              title="Email"
-              lines={["drsuranjanaroy@gmail.com"]}
-            />
-            <ContactItem
-              icon={MapPin}
-              title="Location"
-              lines={[
-                "Siliguri, West Bengal",
-                "Pin 734011",
-                "& also At",
-                "Jadavpur, Kolkata",
-              ]}
-            />
+            <div>
+              <h4 className="font-semibold text-sm uppercase tracking-wider text-white/90 mb-3">
+                Contact
+              </h4>
+              <div className="space-y-3">
+                <p className="flex items-center gap-3 text-sm text-white/70 font-bold">
+                  <Phone className="h-4 w-4 text-white/70 shrink-0" />
+                  +91 7980103899
+                </p>
+                <p className="flex items-center gap-3 text-sm text-white/70 font-bold">
+                  <Mail className="h-4 w-4 text-white/70 shrink-0" />
+                  drsuranjanaroy@gmail.com
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="mt-14">
+            <h4 className="font-semibold text-sm uppercase tracking-wider text-white/90 mb-4">
+              Serviceable Locations
+            </h4>
+            <ul className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-2 text-sm text-white/70">
+              {[
+                "Kolkata",
+                "Siliguri",
+                "Purulia",
+                "Malda",
+                "Dankuni",
+                "Musheerabad",
+                "Kalyani",
+              ].map((place) => (
+                <li key={place} className="flex items-center gap-2">
+                  <span className="h-1 w-1 rounded-full bg-primary" />
+                  {place}
+                </li>
+              ))}
+            </ul>
           </div>
           <div className="mt-14 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between gap-4 text-sm text-white/60">
             <p>
