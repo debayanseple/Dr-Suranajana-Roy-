@@ -60,33 +60,37 @@ const services = [
     icon: Scissors,
     title: "Oral & Maxillofacial Surgery",
     desc: "Surgical management of conditions affecting the face, jaws, and oral cavity.",
-    href: "/services/maxillofacial-surgery",
+    href: "/services",
   },
   {
     icon: Activity,
     title: "Head & Neck Oncosurgery",
     desc: "Comprehensive surgical treatment for cancers of the head and neck region. Expert care from a dedicated oral cancer doctor.",
-    href: "/services/head-and-neck-oncosurgery",
+    href: "/services",
   },
   {
     icon: Smile,
     title: "General Dentistry",
     desc: "Routine examinations, cleanings and preventive care for lifelong oral health.",
+    href: "/services",
   },
   {
     icon: Stethoscope,
     title: "Endodontic Treatment",
     desc: "Precision root canal therapy to save and restore compromised teeth.",
+    href: "/services",
   },
   {
     icon: Wrench,
     title: "Restorative Dentistry",
     desc: "Fillings, crowns and reconstruction to restore form and function.",
+    href: "/services",
   },
   {
     icon: Sparkles,
     title: "Aesthetic & Prosthetic Rehabilitation",
     desc: "Cosmetic and prosthetic solutions for a confident, natural smile.",
+    href: "/services",
   },
 ];
 
@@ -217,7 +221,7 @@ function Index() {
     () => [
       { href: "#home", label: "Home", to: null },
       { href: "#about", label: "About", to: null },
-      { href: "#services", label: "Services", to: null },
+      { href: "/services", label: "Services", to: "/services" },
       { href: "/case-studies", label: "Case Studies", to: "/case-studies" },
       { href: "#contact", label: "Contact", to: null },
     ],
@@ -393,12 +397,12 @@ function Index() {
               >
                 Consult Now <ArrowRight className="h-4 w-4" />
               </Link>
-              <a
-                href="#services"
+              <Link
+                to="/services"
                 className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white/10 border border-white/30 text-white font-medium hover:bg-white/20 transition"
               >
                 View Services
-              </a>
+              </Link>
             </div>
           </div>
         </div>

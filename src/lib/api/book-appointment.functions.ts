@@ -21,7 +21,10 @@ export const submitAppointment = createServerFn({ method: "POST" })
       body: JSON.stringify(data),
     });
 
-    const result = (await response.json().catch(() => null)) as { ok?: boolean; error?: string } | null;
+    const result = (await response.json().catch(() => null)) as {
+      ok?: boolean;
+      error?: string;
+    } | null;
     if (!response.ok || !result?.ok) {
       throw new Error(result?.error ?? "Failed to submit appointment");
     }

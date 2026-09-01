@@ -27,13 +27,15 @@ export const caseStudies: CaseStudy[] = [
     slug: "right-neck-schwannoma",
     category: "Head & Neck Oncology",
     title: "Right-sided Neck Schwannoma",
-    subtitle: "Complete extracapsular excision of a vagal schwannoma in the right carotid space",
+    subtitle:
+      "Complete extracapsular excision of a vagal schwannoma in the right carotid space",
     summary:
       "A 44-year-old male presented with a progressively enlarging right-sided neck swelling. Imaging and FNAC suggested a neurogenic tumour within the carotid space. Complete extracapsular excision was performed with preservation of the vagus nerve and adjacent neurovascular structures.",
     patient: {
       age: "44 years",
       sex: "Male",
-      presentation: "Right-sided neck swelling, diffuse, mobile, non-tender at level II",
+      presentation:
+        "Right-sided neck swelling, diffuse, mobile, non-tender at level II",
       duration: "Progressive enlargement over 2 months",
     },
     diagnosis: {
@@ -98,24 +100,46 @@ export const caseStudies: CaseStudy[] = [
     discussion:
       "Schwannomas are encapsulated nerve sheath tumours with a biphasic Antoni A / Antoni B architecture. Surgical enucleation is the treatment of choice; given proximity to the carotid artery and internal jugular vein, meticulous dissection is mandatory to avoid neurovascular injury.",
     gallery: [
-      { src: img1, caption: "Figure 1 — Pre-operative clinical photograph showing a well-defined right neck swelling." },
-      { src: img2, caption: "Figure 2 — MRI neck (sagittal, coronal, axial): well-circumscribed hyperintense lesion." },
-      { src: img3, caption: "Figure 3 — Intraoperative view of the well-defined, globular schwannoma during dissection." },
-      { src: img4, caption: "Figure 4 — Gross specimen of the excised schwannoma (~2.7 cm)." },
-      { src: img5, caption: "Figure 5 — Surgical bed after total enucleation, with preserved surrounding structures." },
+      {
+        src: img1,
+        caption:
+          "Figure 1 — Pre-operative clinical photograph showing a well-defined right neck swelling.",
+      },
+      {
+        src: img2,
+        caption:
+          "Figure 2 — MRI neck (sagittal, coronal, axial): well-circumscribed hyperintense lesion.",
+      },
+      {
+        src: img3,
+        caption:
+          "Figure 3 — Intraoperative view of the well-defined, globular schwannoma during dissection.",
+      },
+      {
+        src: img4,
+        caption:
+          "Figure 4 — Gross specimen of the excised schwannoma (~2.7 cm).",
+      },
+      {
+        src: img5,
+        caption:
+          "Figure 5 — Surgical bed after total enucleation, with preserved surrounding structures.",
+      },
     ],
   },
   {
     slug: "odontogenic-keratocyst",
     category: "Maxillofacial Pathology",
     title: "Odontogenic Keratocyst with Segmental Resection",
-    subtitle: "Aggressive recurrent OKC of the posterior mandible managed with segmental mandibulectomy",
+    subtitle:
+      "Aggressive recurrent OKC of the posterior mandible managed with segmental mandibulectomy",
     summary:
       "A patient with a large recurrent odontogenic keratocyst involving the posterior mandible, with cortical perforation and tooth displacement on imaging, underwent segmental mandibulectomy with primary reconstruction.",
     patient: {
       age: "Adult",
       sex: "—",
-      presentation: "Recurrent posterior mandibular swelling with cortical expansion",
+      presentation:
+        "Recurrent posterior mandibular swelling with cortical expansion",
       duration: "Recurrent lesion, multi-year history",
     },
     diagnosis: {
@@ -124,16 +148,41 @@ export const caseStudies: CaseStudy[] = [
         "Tooth displacement on clinical and radiographic examination",
       ],
       investigations: [
-        { name: "OPG / CBCT", result: "Large multilocular radiolucent lesion with cortical perforation and tooth displacement." },
-        { name: "Incisional biopsy", result: "Parakeratinised stratified squamous epithelium with palisaded basal layer — consistent with odontogenic keratocyst." },
+        {
+          name: "OPG / CBCT",
+          result:
+            "Large multilocular radiolucent lesion with cortical perforation and tooth displacement.",
+        },
+        {
+          name: "Incisional biopsy",
+          result:
+            "Parakeratinised stratified squamous epithelium with palisaded basal layer — consistent with odontogenic keratocyst.",
+        },
       ],
-      conclusion: "Recurrent odontogenic keratocyst with aggressive radiological features, requiring resection rather than enucleation alone.",
+      conclusion:
+        "Recurrent odontogenic keratocyst with aggressive radiological features, requiring resection rather than enucleation alone.",
     },
     treatment: [
-      { step: "Multidisciplinary planning", detail: "Resection margins and reconstruction strategy planned based on CBCT." },
-      { step: "Segmental mandibulectomy", detail: "Segmental resection of the involved mandibular segment with adequate margins." },
-      { step: "Primary reconstruction", detail: "Reconstruction to restore mandibular continuity, occlusion and facial contour." },
-      { step: "Histopathology", detail: "Final histopathology confirmed odontogenic keratocyst with clear margins." },
+      {
+        step: "Multidisciplinary planning",
+        detail:
+          "Resection margins and reconstruction strategy planned based on CBCT.",
+      },
+      {
+        step: "Segmental mandibulectomy",
+        detail:
+          "Segmental resection of the involved mandibular segment with adequate margins.",
+      },
+      {
+        step: "Primary reconstruction",
+        detail:
+          "Reconstruction to restore mandibular continuity, occlusion and facial contour.",
+      },
+      {
+        step: "Histopathology",
+        detail:
+          "Final histopathology confirmed odontogenic keratocyst with clear margins.",
+      },
     ],
     outcomes: [
       "No recurrence at 12-month follow-up",
@@ -146,7 +195,8 @@ export const caseStudies: CaseStudy[] = [
     slug: "verrucous-carcinoma-buccal",
     category: "Head & Neck Oncology",
     title: "Verrucous Carcinoma of the Buccal Mucosa",
-    subtitle: "Wide local excision with buccal pad of fat reconstruction for an early-stage exophytic lesion",
+    subtitle:
+      "Wide local excision with buccal pad of fat reconstruction for an early-stage exophytic lesion",
     summary:
       "Middle-aged patient with a long-standing exophytic buccal lesion, clinically consistent with verrucous carcinoma. Managed with wide local excision and reconstruction using a buccal pad of fat flap.",
     patient: {
@@ -158,15 +208,34 @@ export const caseStudies: CaseStudy[] = [
     diagnosis: {
       findings: ["Well-defined exophytic, warty lesion of right buccal mucosa"],
       investigations: [
-        { name: "Incisional biopsy", result: "Verrucous carcinoma — locally invasive variant of squamous cell carcinoma." },
-        { name: "Imaging", result: "No deep muscle invasion or nodal involvement on imaging." },
+        {
+          name: "Incisional biopsy",
+          result:
+            "Verrucous carcinoma — locally invasive variant of squamous cell carcinoma.",
+        },
+        {
+          name: "Imaging",
+          result: "No deep muscle invasion or nodal involvement on imaging.",
+        },
       ],
-      conclusion: "Early-stage verrucous carcinoma suitable for wide local excision with local flap reconstruction.",
+      conclusion:
+        "Early-stage verrucous carcinoma suitable for wide local excision with local flap reconstruction.",
     },
     treatment: [
-      { step: "Wide local excision", detail: "Excision with adequate clinical margins under general anaesthesia." },
-      { step: "Reconstruction", detail: "Buccal pad of fat flap mobilised to cover the defect, avoiding free-flap morbidity for an early lesion." },
-      { step: "Histopathology review", detail: "Margins reviewed; confirmed tumour-free." },
+      {
+        step: "Wide local excision",
+        detail:
+          "Excision with adequate clinical margins under general anaesthesia.",
+      },
+      {
+        step: "Reconstruction",
+        detail:
+          "Buccal pad of fat flap mobilised to cover the defect, avoiding free-flap morbidity for an early lesion.",
+      },
+      {
+        step: "Histopathology review",
+        detail: "Margins reviewed; confirmed tumour-free.",
+      },
     ],
     outcomes: [
       "Tumour-free margins on histopathology",
@@ -179,27 +248,54 @@ export const caseStudies: CaseStudy[] = [
     slug: "panfacial-trauma-reconstruction",
     category: "Reconstructive Surgery",
     title: "Pan-facial Fracture Reconstruction",
-    subtitle: "Sequential ORIF for pan-facial fractures following a road traffic accident",
+    subtitle:
+      "Sequential ORIF for pan-facial fractures following a road traffic accident",
     summary:
       "Polytrauma patient with pan-facial fractures involving the zygomatic complex, naso-orbito-ethmoid region and mandible, managed with sequential open reduction and internal fixation following the 'bottom-up, outside-in' principle.",
     patient: {
       age: "Adult",
       sex: "—",
-      presentation: "Pan-facial fractures with malocclusion and facial asymmetry after RTA",
+      presentation:
+        "Pan-facial fractures with malocclusion and facial asymmetry after RTA",
       duration: "Acute trauma",
     },
     diagnosis: {
-      findings: ["Facial asymmetry", "Malocclusion", "Periorbital ecchymosis", "Mobile mid-face and mandible segments"],
-      investigations: [
-        { name: "CT face (3D)", result: "Fractures of zygomatic complex, NOE region and mandible with displacement." },
+      findings: [
+        "Facial asymmetry",
+        "Malocclusion",
+        "Periorbital ecchymosis",
+        "Mobile mid-face and mandible segments",
       ],
-      conclusion: "Pan-facial trauma requiring staged surgical reconstruction to restore vertical and horizontal buttresses.",
+      investigations: [
+        {
+          name: "CT face (3D)",
+          result:
+            "Fractures of zygomatic complex, NOE region and mandible with displacement.",
+        },
+      ],
+      conclusion:
+        "Pan-facial trauma requiring staged surgical reconstruction to restore vertical and horizontal buttresses.",
     },
     treatment: [
-      { step: "Initial stabilisation", detail: "Airway and polytrauma management per ATLS protocol; dental impressions for occlusion." },
-      { step: "Mandibular fixation", detail: "ORIF of mandibular fractures to re-establish occlusion as the foundation." },
-      { step: "Mid-face reconstruction", detail: "Sequential ORIF of zygomatic and NOE fractures restoring facial buttresses." },
-      { step: "Post-operative rehabilitation", detail: "Physiotherapy, occlusal monitoring and staged review." },
+      {
+        step: "Initial stabilisation",
+        detail:
+          "Airway and polytrauma management per ATLS protocol; dental impressions for occlusion.",
+      },
+      {
+        step: "Mandibular fixation",
+        detail:
+          "ORIF of mandibular fractures to re-establish occlusion as the foundation.",
+      },
+      {
+        step: "Mid-face reconstruction",
+        detail:
+          "Sequential ORIF of zygomatic and NOE fractures restoring facial buttresses.",
+      },
+      {
+        step: "Post-operative rehabilitation",
+        detail: "Physiotherapy, occlusal monitoring and staged review.",
+      },
     ],
     outcomes: [
       "Restored pre-injury occlusion",
@@ -210,4 +306,5 @@ export const caseStudies: CaseStudy[] = [
   },
 ];
 
-export const getCaseStudy = (slug: string) => caseStudies.find((c) => c.slug === slug);
+export const getCaseStudy = (slug: string) =>
+  caseStudies.find((c) => c.slug === slug);

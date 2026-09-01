@@ -11,9 +11,8 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as BookAppointmentRouteImport } from './routes/book-appointment'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as CaseStudiesIndexRouteImport } from './routes/case-studies.index'
-import { Route as ServicesMaxillofacialSurgeryRouteImport } from './routes/services.maxillofacial-surgery'
-import { Route as ServicesHeadAndNeckOncosurgeryRouteImport } from './routes/services.head-and-neck-oncosurgery'
 import { Route as CaseStudiesSlugRouteImport } from './routes/case-studies.$slug'
 
 const BookAppointmentRoute = BookAppointmentRouteImport.update({
@@ -26,23 +25,16 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/services/',
+  path: '/services/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CaseStudiesIndexRoute = CaseStudiesIndexRouteImport.update({
   id: '/case-studies/',
   path: '/case-studies/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ServicesMaxillofacialSurgeryRoute =
-  ServicesMaxillofacialSurgeryRouteImport.update({
-    id: '/services/maxillofacial-surgery',
-    path: '/services/maxillofacial-surgery',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const ServicesHeadAndNeckOncosurgeryRoute =
-  ServicesHeadAndNeckOncosurgeryRouteImport.update({
-    id: '/services/head-and-neck-oncosurgery',
-    path: '/services/head-and-neck-oncosurgery',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const CaseStudiesSlugRoute = CaseStudiesSlugRouteImport.update({
   id: '/case-studies/$slug',
   path: '/case-studies/$slug',
@@ -53,26 +45,23 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/book-appointment': typeof BookAppointmentRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
-  '/services/head-and-neck-oncosurgery': typeof ServicesHeadAndNeckOncosurgeryRoute
-  '/services/maxillofacial-surgery': typeof ServicesMaxillofacialSurgeryRoute
   '/case-studies/': typeof CaseStudiesIndexRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/book-appointment': typeof BookAppointmentRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
-  '/services/head-and-neck-oncosurgery': typeof ServicesHeadAndNeckOncosurgeryRoute
-  '/services/maxillofacial-surgery': typeof ServicesMaxillofacialSurgeryRoute
   '/case-studies': typeof CaseStudiesIndexRoute
+  '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/book-appointment': typeof BookAppointmentRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
-  '/services/head-and-neck-oncosurgery': typeof ServicesHeadAndNeckOncosurgeryRoute
-  '/services/maxillofacial-surgery': typeof ServicesMaxillofacialSurgeryRoute
   '/case-studies/': typeof CaseStudiesIndexRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -80,34 +69,30 @@ export interface FileRouteTypes {
     | '/'
     | '/book-appointment'
     | '/case-studies/$slug'
-    | '/services/head-and-neck-oncosurgery'
-    | '/services/maxillofacial-surgery'
     | '/case-studies/'
+    | '/services/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/book-appointment'
     | '/case-studies/$slug'
-    | '/services/head-and-neck-oncosurgery'
-    | '/services/maxillofacial-surgery'
     | '/case-studies'
+    | '/services'
   id:
     | '__root__'
     | '/'
     | '/book-appointment'
     | '/case-studies/$slug'
-    | '/services/head-and-neck-oncosurgery'
-    | '/services/maxillofacial-surgery'
     | '/case-studies/'
+    | '/services/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BookAppointmentRoute: typeof BookAppointmentRoute
   CaseStudiesSlugRoute: typeof CaseStudiesSlugRoute
-  ServicesHeadAndNeckOncosurgeryRoute: typeof ServicesHeadAndNeckOncosurgeryRoute
-  ServicesMaxillofacialSurgeryRoute: typeof ServicesMaxillofacialSurgeryRoute
   CaseStudiesIndexRoute: typeof CaseStudiesIndexRoute
+  ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -126,25 +111,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/': {
+      id: '/services/'
+      path: '/services'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/case-studies/': {
       id: '/case-studies/'
       path: '/case-studies'
       fullPath: '/case-studies/'
       preLoaderRoute: typeof CaseStudiesIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/services/maxillofacial-surgery': {
-      id: '/services/maxillofacial-surgery'
-      path: '/services/maxillofacial-surgery'
-      fullPath: '/services/maxillofacial-surgery'
-      preLoaderRoute: typeof ServicesMaxillofacialSurgeryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/services/head-and-neck-oncosurgery': {
-      id: '/services/head-and-neck-oncosurgery'
-      path: '/services/head-and-neck-oncosurgery'
-      fullPath: '/services/head-and-neck-oncosurgery'
-      preLoaderRoute: typeof ServicesHeadAndNeckOncosurgeryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/case-studies/$slug': {
@@ -161,9 +139,8 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BookAppointmentRoute: BookAppointmentRoute,
   CaseStudiesSlugRoute: CaseStudiesSlugRoute,
-  ServicesHeadAndNeckOncosurgeryRoute: ServicesHeadAndNeckOncosurgeryRoute,
-  ServicesMaxillofacialSurgeryRoute: ServicesMaxillofacialSurgeryRoute,
   CaseStudiesIndexRoute: CaseStudiesIndexRoute,
+  ServicesIndexRoute: ServicesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

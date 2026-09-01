@@ -1,4 +1,4 @@
 {
-    "snyk.advanced.autoSelectOrganization": true,
-    "claudeCode.useTerminal": false
+  "snyk.advanced.autoSelectOrganization": true,
+  "claudeCode.useTerminal": false
 }

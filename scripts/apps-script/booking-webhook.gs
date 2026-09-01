@@ -9,7 +9,15 @@
 const SHEET_ID = "155_lHU7bgStole7q1K6yiZTS8lvZ1FsccO7NoszLmzU";
 const SHEET_NAME = "Appointments";
 const NOTIFY_EMAIL = "23suranjanaroy@gmail.com";
-const HEADERS = ["Full name", "Phone", "Email", "Service", "Preferred date", "Preferred time", "Notes"];
+const HEADERS = [
+  "Full name",
+  "Phone",
+  "Email",
+  "Service",
+  "Preferred date",
+  "Preferred time",
+  "Notes",
+];
 
 // Health check: open the /exec URL in a browser to confirm which sheet the
 // CURRENTLY DEPLOYED version is writing to. If activeSheetId here is not the
@@ -71,13 +79,23 @@ function appendRow(data) {
 function sendConfirmationEmail(data) {
   const subject = "Your appointment request — Dr. Suranjana Roy";
   const body =
-    "Hi " + data.name + ",\n\n" +
+    "Hi " +
+    data.name +
+    ",\n\n" +
     "We've received your appointment request:\n\n" +
-    "Service: " + data.service + "\n" +
-    "Date: " + data.date + "\n" +
-    "Time: " + data.time + "\n" +
+    "Service: " +
+    data.service +
+    "\n" +
+    "Date: " +
+    data.date +
+    "\n" +
+    "Time: " +
+    data.time +
+    "\n" +
     (data.notes ? "Notes: " + data.notes + "\n\n" : "\n") +
-    "We will contact you shortly at " + data.phone + " to confirm.\n\n" +
+    "We will contact you shortly at " +
+    data.phone +
+    " to confirm.\n\n" +
     "— Dr. Suranjana Roy's Clinic";
   MailApp.sendEmail(data.email, subject, body);
 }
@@ -86,16 +104,32 @@ function sendNotificationEmail(data) {
   const subject = "New appointment booked — " + data.name;
   const body =
     "A new appointment request was submitted:\n\n" +
-    "Name: " + data.name + "\n" +
-    "Phone: " + data.phone + "\n" +
-    "Email: " + data.email + "\n" +
-    "Service: " + data.service + "\n" +
-    "Date: " + data.date + "\n" +
-    "Time: " + data.time + "\n" +
-    "Notes: " + (data.notes || "—") + "\n";
+    "Name: " +
+    data.name +
+    "\n" +
+    "Phone: " +
+    data.phone +
+    "\n" +
+    "Email: " +
+    data.email +
+    "\n" +
+    "Service: " +
+    data.service +
+    "\n" +
+    "Date: " +
+    data.date +
+    "\n" +
+    "Time: " +
+    data.time +
+    "\n" +
+    "Notes: " +
+    (data.notes || "—") +
+    "\n";
   MailApp.sendEmail(NOTIFY_EMAIL, subject, body);
 }
 
 function jsonResponse(obj) {
-  return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(ContentService.MimeType.JSON);
+  return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(
+    ContentService.MimeType.JSON,
+  );
 }

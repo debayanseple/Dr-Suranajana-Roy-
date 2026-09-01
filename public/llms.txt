@@ -5,6 +5,7 @@
 ## Pages
 
 - [Home](/): Overview of services, qualifications, and academic work.
+- [Services](/services): All dental and surgical services with detailed expandable sections.
 - [Book Appointment](/book-appointment): Contact information and consultation booking.
 - [Case Studies](/case-studies): Clinical case studies index.
 - [Right Neck Schwannoma](/case-studies/right-neck-schwannoma): Case study.

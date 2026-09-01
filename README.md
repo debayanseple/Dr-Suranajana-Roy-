@@ -14,14 +14,14 @@ Built with [TanStack Start](https://tanstack.com/start) (full-stack React), Reac
 
 ## Tech Stack
 
-| Area | Tooling |
-|------|---------|
-| Framework | TanStack Start + TanStack Router |
-| UI | React 19, Tailwind CSS v4, Radix UI, lucide-react |
-| Forms & validation | react-hook-form, Zod |
-| Data | TanStack Query |
-| Build | Vite 7, Nitro |
-| Tooling | TypeScript, ESLint, Prettier |
+| Area               | Tooling                                           |
+| ------------------ | ------------------------------------------------- |
+| Framework          | TanStack Start + TanStack Router                  |
+| UI                 | React 19, Tailwind CSS v4, Radix UI, lucide-react |
+| Forms & validation | react-hook-form, Zod                              |
+| Data               | TanStack Query                                    |
+| Build              | Vite 7, Nitro                                     |
+| Tooling            | TypeScript, ESLint, Prettier                      |
 
 ## Getting Started
 
@@ -53,21 +53,21 @@ npm run preview   # serve the production build locally
 
 ## Available Scripts
 
-| Script | Description |
-|--------|-------------|
-| `npm run dev` | Start the Vite dev server |
-| `npm run build` | Production build |
-| `npm run build:dev` | Build in development mode |
-| `npm run preview` | Preview the production build |
-| `npm run lint` | Run ESLint |
-| `npm run format` | Format the codebase with Prettier |
+| Script              | Description                       |
+| ------------------- | --------------------------------- |
+| `npm run dev`       | Start the Vite dev server         |
+| `npm run build`     | Production build                  |
+| `npm run build:dev` | Build in development mode         |
+| `npm run preview`   | Preview the production build      |
+| `npm run lint`      | Run ESLint                        |
+| `npm run format`    | Format the codebase with Prettier |
 
 ## Environment Variables
 
 Create a `.env` file in the project root for local development:
 
-| Variable | Required | Description |
-|----------|----------|-------------|
+| Variable              | Required               | Description                                                                                                            |
+| --------------------- | ---------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | `BOOKING_WEBHOOK_URL` | Yes (for appointments) | URL of the Google Apps Script Web App that records appointment submissions. Server-only — never exposed to the client. |
 
 Public values must be prefixed with `VITE_` to be readable in the browser. **Never** put secrets behind the `VITE_` prefix.
