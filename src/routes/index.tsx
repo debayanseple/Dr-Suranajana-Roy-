@@ -434,8 +434,7 @@ function Index() {
           <div className="mt-12 flex justify-center">
             <Link
               to="/services"
-              className="group inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-primary-foreground font-medium shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl active:translate-y-0"
-              style={{ background: "var(--gradient-cta)" }}
+              className="group inline-flex items-center gap-2 text-primary font-semibold underline-offset-4 decoration-2 hover:underline decoration-primary/30 hover:decoration-primary transition-colors duration-300"
             >
               View All Services
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
