@@ -93,10 +93,14 @@ function Services() {
         </div>
       </section>
 
-      {/* Expandable service cards */}
+      {/* Expandable service cards - side by side, responsive */}
       <section className="py-16 md:py-20">
-        <div className="max-w-4xl mx-auto px-6">
-          <Accordion type="single" collapsible className="space-y-6">
+        <div className="max-w-7xl mx-auto px-6">
+          <Accordion
+            type="single"
+            collapsible
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start"
+          >
             {services.map((service) => {
               const Icon = service.icon;
               return (
