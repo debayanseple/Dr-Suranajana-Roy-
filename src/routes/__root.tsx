@@ -133,7 +133,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             "@type": "Physician",
             name: "Dr. Suranjana Roy",
             medicalSpecialty: ["OralAndMaxillofacialSurgery", "Oncologic"],
-            url: "https://dr-suranjana-roy.vercel.app/",
+            url: "https://dr-suranajana-roy.vercel.app/",
             telephone: "+91-7980103899",
             email: "drsuranjanaroy@gmail.com",
             address: [
