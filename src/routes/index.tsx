@@ -431,6 +431,16 @@ function Index() {
               <ServiceCard key={s.title} service={s} />
             ))}
           </div>
+          <div className="mt-12 flex justify-center">
+            <Link
+              to="/services"
+              className="group inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-primary-foreground font-medium shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl active:translate-y-0"
+              style={{ background: "var(--gradient-cta)" }}
+            >
+              View All Services
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+            </Link>
+          </div>
         </div>
       </section>
 
