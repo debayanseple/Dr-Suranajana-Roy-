@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Stethoscope, Phone, Mail, MapPin } from "lucide-react";
+import { ArrowLeft, Stethoscope, Phone, Mail } from "lucide-react";
 
 import { AppointmentForm } from "@/components/appointment-form";
 
@@ -85,14 +85,6 @@ function BookAppointment() {
               </h3>
               <Info icon={Phone} lines={["+91 7980103899"]} />
               <Info icon={Mail} lines={["drsuranjanaroy@gmail.com"]} />
-              <Info
-                icon={MapPin}
-                lines={[
-                  "Siliguri, West Bengal",
-                  "Pin 734011",
-                  "Jadavpur, Kolkata",
-                ]}
-              />
             </div>
             <div
               className="rounded-2xl p-6 text-white"
