@@ -1,10 +1,10 @@
 import {
-  Activity,
-  Scissors,
-  Smile,
+  Crown,
+  ScanFace,
+  ShieldPlus,
+  SmilePlus,
   Sparkles,
-  Stethoscope,
-  Wrench,
+  Syringe,
   type LucideIcon,
 } from "lucide-react";
 
@@ -34,7 +34,7 @@ export interface Service {
 export const services: Service[] = [
   {
     id: "maxillofacial-surgery",
-    icon: Scissors,
+    icon: ScanFace,
     title: "Oral & Maxillofacial Surgery",
     shortDesc:
       "Surgical management of conditions affecting the face, jaws, and oral cavity — wisdom teeth, jaw cysts and tumours, facial trauma, corrective jaw surgery and dental implants with specialist precision.",
@@ -84,7 +84,7 @@ export const services: Service[] = [
   },
   {
     id: "head-and-neck-oncosurgery",
-    icon: Activity,
+    icon: ShieldPlus,
     title: "Head & Neck Oncosurgery",
     shortDesc:
       "Comprehensive surgical treatment for cancers of the head and neck region — from tumour removal and neck dissection to immediate reconstruction — expert care from a dedicated oral cancer doctor.",
@@ -130,7 +130,7 @@ export const services: Service[] = [
   },
   {
     id: "general-dentistry",
-    icon: Smile,
+    icon: SmilePlus,
     title: "General Dentistry",
     shortDesc:
       "Routine examinations, cleanings and preventive care for lifelong oral health — early screening for decay, gum disease and oral cancer, tailored for the whole family.",
@@ -168,7 +168,7 @@ export const services: Service[] = [
   },
   {
     id: "endodontic-treatment",
-    icon: Stethoscope,
+    icon: Syringe,
     title: "Endodontic Treatment",
     shortDesc:
       "Precision root canal therapy to save and restore compromised teeth — modern rotary, pain-free techniques that relieve infection and avoid extraction in one to two visits.",
@@ -206,7 +206,7 @@ export const services: Service[] = [
   },
   {
     id: "restorative-dentistry",
-    icon: Wrench,
+    icon: Crown,
     title: "Restorative Dentistry",
     shortDesc:
       "Fillings, crowns and reconstruction to restore form and function — durable tooth-coloured solutions to rebuild decayed, fractured or missing teeth and protect your bite.",

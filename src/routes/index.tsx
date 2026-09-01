@@ -1,11 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Stethoscope,
-  Scissors,
+  Crown,
+  ScanFace,
+  ShieldPlus,
+  SmilePlus,
+  Syringe,
   Sparkles,
-  Activity,
-  Smile,
-  Wrench,
   Phone,
   Mail,
   BadgeCheck,
@@ -57,39 +58,39 @@ export const Route = createFileRoute("/")({
 
 const services = [
   {
-    icon: Scissors,
+    icon: ScanFace,
     title: "Oral & Maxillofacial Surgery",
-    desc: "Surgical management of conditions affecting the face, jaws, and oral cavity.",
+    desc: "Surgical management of conditions affecting the face, jaws, and oral cavity — wisdom teeth, cysts, trauma and implants.",
     href: "/services",
   },
   {
-    icon: Activity,
+    icon: ShieldPlus,
     title: "Head & Neck Oncosurgery",
-    desc: "Comprehensive surgical treatment for cancers of the head and neck region. Expert care from a dedicated oral cancer doctor.",
+    desc: "Comprehensive cancer care — tumour removal, neck dissection and immediate reconstruction.",
     href: "/services",
   },
   {
-    icon: Smile,
+    icon: SmilePlus,
     title: "General Dentistry",
-    desc: "Routine examinations, cleanings and preventive care for lifelong oral health.",
+    desc: "Routine examinations, cleanings and preventive care for lifelong oral health and early cancer screening.",
     href: "/services",
   },
   {
-    icon: Stethoscope,
+    icon: Syringe,
     title: "Endodontic Treatment",
-    desc: "Precision root canal therapy to save and restore compromised teeth.",
+    desc: "Precision root canal therapy to save compromised teeth — modern, pain-free rotary techniques.",
     href: "/services",
   },
   {
-    icon: Wrench,
+    icon: Crown,
     title: "Restorative Dentistry",
-    desc: "Fillings, crowns and reconstruction to restore form and function.",
+    desc: "Fillings, crowns and reconstruction to restore form, function and your natural bite.",
     href: "/services",
   },
   {
     icon: Sparkles,
     title: "Aesthetic & Prosthetic Rehabilitation",
-    desc: "Cosmetic and prosthetic solutions for a confident, natural smile.",
+    desc: "Cosmetic and prosthetic solutions for a confident, natural smile — veneers, dentures and full rehab.",
     href: "/services",
   },
 ];
