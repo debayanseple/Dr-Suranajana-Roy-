@@ -13,6 +13,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useState } from "react";
 
 export const Route = createFileRoute("/services/")({
   head: () => ({
@@ -41,6 +42,8 @@ export const Route = createFileRoute("/services/")({
 });
 
 function Services() {
+  const [openValue, setOpenValue] = useState<string | undefined>(undefined);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <header className="sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border">
@@ -99,15 +102,18 @@ function Services() {
           <Accordion
             type="single"
             collapsible
+            value={openValue}
+            onValueChange={setOpenValue}
             className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start"
           >
             {services.map((service) => {
               const Icon = service.icon;
+              const isOpen = openValue === service.id;
               return (
                 <AccordionItem
                   key={service.id}
                   value={service.id}
-                  className="bg-card border border-border rounded-3xl px-6 md:px-8 overflow-hidden transition-all hover:-translate-y-0.5"
+                  className={`bg-card border border-border rounded-3xl px-6 md:px-8 overflow-hidden transition-all duration-300 hover:-translate-y-0.5 ${isOpen ? "md:col-span-2" : ""}`}
                   style={{ boxShadow: "var(--shadow-card)" }}
                 >
                   <AccordionTrigger className="py-6 hover:no-underline">
@@ -122,7 +128,7 @@ function Services() {
                         >
                           {service.title}
                         </span>
-                        <span className="block mt-1 text-sm font-normal text-muted-foreground leading-relaxed">
+                        <span className="block mt-1 text-[15px] font-normal text-muted-foreground leading-relaxed">
                           {service.shortDesc}
                         </span>
                       </span>

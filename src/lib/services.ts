@@ -37,7 +37,7 @@ export const services: Service[] = [
     icon: Scissors,
     title: "Oral & Maxillofacial Surgery",
     shortDesc:
-      "Surgical management of conditions affecting the face, jaws, and oral cavity.",
+      "Surgical management of conditions affecting the face, jaws, and oral cavity — wisdom teeth, jaw cysts and tumours, facial trauma, corrective jaw surgery and dental implants with specialist precision.",
     tagline:
       "Specialist surgery of the jaw, mouth and face — from wisdom teeth and jaw cysts to facial trauma and reconstruction.",
     imagePlaceholders: [
@@ -87,7 +87,7 @@ export const services: Service[] = [
     icon: Activity,
     title: "Head & Neck Oncosurgery",
     shortDesc:
-      "Comprehensive surgical treatment for cancers of the head and neck region. Expert care from a dedicated oral cancer doctor.",
+      "Comprehensive surgical treatment for cancers of the head and neck region — from tumour removal and neck dissection to immediate reconstruction — expert care from a dedicated oral cancer doctor.",
     tagline:
       "Specialist surgical care for cancers of the mouth, jaw, throat and face — combining precise tumour removal with immediate reconstruction.",
     imagePlaceholders: [
@@ -133,7 +133,7 @@ export const services: Service[] = [
     icon: Smile,
     title: "General Dentistry",
     shortDesc:
-      "Routine examinations, cleanings and preventive care for lifelong oral health.",
+      "Routine examinations, cleanings and preventive care for lifelong oral health — early screening for decay, gum disease and oral cancer, tailored for the whole family.",
     tagline:
       "Preventive, routine and family dental care — the foundation everything else is built on.",
     imagePlaceholders: [
@@ -171,7 +171,7 @@ export const services: Service[] = [
     icon: Stethoscope,
     title: "Endodontic Treatment",
     shortDesc:
-      "Precision root canal therapy to save and restore compromised teeth.",
+      "Precision root canal therapy to save and restore compromised teeth — modern rotary, pain-free techniques that relieve infection and avoid extraction in one to two visits.",
     tagline:
       "Root canal therapy that relieves pain and saves your natural tooth.",
     imagePlaceholders: [
@@ -209,7 +209,7 @@ export const services: Service[] = [
     icon: Wrench,
     title: "Restorative Dentistry",
     shortDesc:
-      "Fillings, crowns and reconstruction to restore form and function.",
+      "Fillings, crowns and reconstruction to restore form and function — durable tooth-coloured solutions to rebuild decayed, fractured or missing teeth and protect your bite.",
     tagline:
       "Rebuilding damaged and missing tooth structure — fillings, crowns, bridges and implants.",
     imagePlaceholders: [
@@ -247,7 +247,7 @@ export const services: Service[] = [
     icon: Sparkles,
     title: "Aesthetic & Prosthetic Rehabilitation",
     shortDesc:
-      "Cosmetic and prosthetic solutions for a confident, natural smile.",
+      "Cosmetic and prosthetic solutions for a confident, natural smile — from veneers and whitening to dentures and full-mouth rehab after surgery, trauma or long-term tooth loss.",
     tagline:
       "Complete smile rehabilitation — from cosmetic refinement to full-mouth prosthetic reconstruction.",
     imagePlaceholders: [
