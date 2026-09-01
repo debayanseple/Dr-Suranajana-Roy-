@@ -2,7 +2,7 @@
 
 ## Commands
 - `npm run dev` — Start Vite dev server (port 3000)
-- `npm run build` — Production build (outputs to `.output/`, Nitro preset: Vercel)
+- `npm run build` — Production build (Nitro emits Vercel Build Output to `.vercel/output/`)
 - `npm run build:dev` — Development build
 - `npm run preview` — Preview production build
 - `npm run lint` — ESLint (includes Prettier via plugin)
@@ -44,7 +44,7 @@ src/
 │   ├── case-studies.ts  # Content data
 │   ├── config.server.ts # Server-only config
 │   ├── error-capture.ts # Global error capture for SSR
-│   └── error-page.tsx   # 500 error UI
+│   └── error-page.ts    # 500 error UI
 ├── routes/              # File-based routes (TanStack Router)
 │   ├── __root.tsx       # Root layout + providers
 │   ├── index.tsx        # Home
@@ -59,3 +59,8 @@ src/
 ```
 
 `scripts/apps-script/booking-webhook.gs` is the Google Apps Script that `BOOKING_WEBHOOK_URL` points at.
+
+## Working Docs (repo root)
+- `plan.md` — SEO & Google AI (SGE) optimization strategy driving recent commits
+- `todo (1).md` — progress checklist for that plan
+- `services.md` — canonical service list + FAQs (content source for service pages)
