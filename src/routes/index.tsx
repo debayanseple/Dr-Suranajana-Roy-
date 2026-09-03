@@ -19,7 +19,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { useEffect, useState, useMemo, memo, useRef } from "react";
-import heroImg from "@/assets/dr-suranjana-main.png";
+import heroImg from "@/assets/OT_dress_profile-removebg-preview.png";
 import bannerImg from "@/assets/her-banner.jpg";
 import { AppointmentForm } from "@/components/appointment-form";
 import { LOCATIONS } from "@/lib/locations";
@@ -419,8 +419,8 @@ function Index() {
               loading="eager"
               decoding="async"
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="relative w-full h-auto object-contain rounded-3xl"
-              style={{ boxShadow: "var(--shadow-card-hover)" }}
+              className="relative w-full h-auto object-contain object-bottom"
+              style={{ filter: "drop-shadow(0 20px 30px oklch(0.2 0.05 260 / 0.35))" }}
             />
           </div>
           <div className="order-1 md:order-2 md:pb-28">
