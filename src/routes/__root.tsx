@@ -154,6 +154,39 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             areaServed: ["Siliguri", "Kolkata", "West Bengal"],
           }),
         },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "What does a head and neck onco surgeon do?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "A head and neck onco surgeon is a cancer specialist who diagnoses and surgically treats tumours of the mouth, jaw, throat, salivary glands and face. Dr. Suranjana Roy, an MDS Oral & Maxillofacial Surgeon, performs cancer removal (resection) of oral and jaw tumours, neck lymph-node dissection, and reconstruction of the jaw and face after tumour removal — restoring both function and appearance.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "When should I consult an oral cancer doctor?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "See an oral cancer doctor promptly if you notice a mouth ulcer that hasn't healed in more than 2–3 weeks, a red or white patch inside the cheek, tongue or gums, a lump in the jaw or neck, loose teeth without gum disease, difficulty or pain when swallowing, unexplained bleeding from the mouth, or numbness of the lip or chin. Early detection dramatically improves outcomes — when in doubt, get it examined.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Does Dr. Suranjana Roy consult in Kolkata?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes. Dr. Suranjana Roy consults at two locations in West Bengal — Siliguri (Pin 734011) and Jadavpur, Kolkata. You can request an appointment at either location through the Book Appointment form on this site or by calling +91 7980103899.",
+                },
+              },
+            ],
+          }),
+        },
       ],
     }),
     shellComponent: RootShell,

@@ -7,15 +7,19 @@ import {
   Stethoscope,
 } from "lucide-react";
 import { services } from "@/lib/services";
+import { LOCATIONS } from "@/lib/locations";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const Route = createFileRoute("/services/")({
+  validateSearch: (search: Record<string, unknown>) => ({
+    open: typeof search.open === "string" ? search.open : undefined,
+  }),
   head: () => ({
     meta: [
       {
@@ -42,7 +46,26 @@ export const Route = createFileRoute("/services/")({
 });
 
 function Services() {
-  const [openValue, setOpenValue] = useState<string | undefined>(undefined);
+  const { open: openParam } = Route.useSearch();
+  const [openValue, setOpenValue] = useState<string | undefined>(openParam);
+
+  useEffect(() => {
+    if (openParam && services.some((s) => s.id === openParam)) {
+      setOpenValue(openParam);
+    }
+  }, [openParam]);
+
+  useEffect(() => {
+    if (!openValue) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const el = document.getElementById(openValue);
+    if (el) {
+      // small delay to allow accordion animation to start
+      window.requestAnimationFrame(() => {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+  }, [openValue]);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -83,8 +106,8 @@ function Services() {
           </h1>
           <p className="mt-5 text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             From head &amp; neck oncosurgery to routine dentistry — every
-            service Dr. Suranjana Roy offers in Siliguri and Jadavpur, Kolkata.
-            Tap a service to expand its full details.
+            service Dr. Suranjana Roy offers in {LOCATIONS[1]} and{" "}
+            {LOCATIONS[0]}. Tap a service to expand its full details.
           </p>
           <Link
             to="/book-appointment"
@@ -112,6 +135,7 @@ function Services() {
               return (
                 <AccordionItem
                   key={service.id}
+                  id={service.id}
                   value={service.id}
                   className={`bg-card border border-border rounded-3xl px-6 md:px-8 overflow-hidden transition-all duration-300 hover:-translate-y-0.5 ${isOpen ? "md:col-span-2" : ""}`}
                   style={{ boxShadow: "var(--shadow-card)" }}
@@ -141,12 +165,12 @@ function Services() {
                         {service.tagline}
                       </p>
 
-                      {/* Image placeholders for device / equipment / procedure photos */}
+                      {/* Image placeholders — replace with real photos when available */}
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         {service.imagePlaceholders.map((label) => (
                           <div
                             key={label}
-                            className="rounded-2xl border-2 border-dashed border-border bg-secondary/40 p-6 flex flex-col items-center justify-center text-center min-h-40"
+                            className="rounded-2xl border-2 border-dashed border-border bg-secondary/40 p-6 flex flex-col items-center justify-center text-center min-h-32 sm:min-h-40"
                           >
                             <ImageIcon className="h-8 w-8 text-muted-foreground/60 mb-3" />
                             <span className="text-xs font-medium text-muted-foreground/80 leading-relaxed">

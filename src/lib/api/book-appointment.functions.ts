@@ -19,6 +19,7 @@ export const submitAppointment = createServerFn({ method: "POST" })
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
+      signal: AbortSignal.timeout(8000),
     });
 
     const result = (await response.json().catch(() => null)) as {

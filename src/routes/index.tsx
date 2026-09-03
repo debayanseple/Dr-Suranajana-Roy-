@@ -22,6 +22,7 @@ import { useEffect, useState, useMemo, memo, useRef } from "react";
 import heroImg from "@/assets/dr-suranjana-main.png";
 import bannerImg from "@/assets/her-banner.jpg";
 import { AppointmentForm } from "@/components/appointment-form";
+import { LOCATIONS } from "@/lib/locations";
 import {
   Dialog,
   DialogContent,
@@ -61,37 +62,37 @@ const services = [
     icon: ScanFace,
     title: "Oral & Maxillofacial Surgery",
     desc: "Surgical management of conditions affecting the face, jaws, and oral cavity — wisdom teeth, cysts, trauma and implants.",
-    href: "/services",
+    href: "/services?open=maxillofacial-surgery",
   },
   {
     icon: ShieldPlus,
     title: "Head & Neck Oncosurgery",
     desc: "Comprehensive cancer care — tumour removal, neck dissection and immediate reconstruction.",
-    href: "/services",
+    href: "/services?open=head-and-neck-oncosurgery",
   },
   {
     icon: SmilePlus,
     title: "General Dentistry",
     desc: "Routine examinations, cleanings and preventive care for lifelong oral health and early cancer screening.",
-    href: "/services",
+    href: "/services?open=general-dentistry",
   },
   {
     icon: Syringe,
     title: "Endodontic Treatment",
     desc: "Precision root canal therapy to save compromised teeth — modern, pain-free rotary techniques.",
-    href: "/services",
+    href: "/services?open=endodontic-treatment",
   },
   {
     icon: Crown,
     title: "Restorative Dentistry",
     desc: "Fillings, crowns and reconstruction to restore form, function and your natural bite.",
-    href: "/services",
+    href: "/services?open=restorative-dentistry",
   },
   {
     icon: Sparkles,
     title: "Aesthetic & Prosthetic Rehabilitation",
     desc: "Cosmetic and prosthetic solutions for a confident, natural smile — veneers, dentures and full rehab.",
-    href: "/services",
+    href: "/services?open=aesthetic-prosthetic-rehabilitation",
   },
 ];
 
@@ -194,9 +195,54 @@ function Index() {
   const [open, setOpen] = useState(false);
   const [appointmentOpen, setAppointmentOpen] = useState(false);
 
-  // Auto-open the appointment popup on every page load.
+  // Delayed appointment prompt: 7s or 60% scroll, 7-day expiry, respects reduced-motion
   useEffect(() => {
-    setAppointmentOpen(true);
+    const STORAGE_KEY = "appointmentPromptShown";
+    const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw) as { t: number };
+        if (typeof parsed.t === "number" && Date.now() - parsed.t < SEVEN_DAYS_MS) {
+          return;
+        }
+      }
+    } catch {
+      // ignore storage errors
+    }
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let triggered = false;
+    let timer: number | undefined;
+
+    const cleanup = () => {
+      if (timer !== undefined) window.clearTimeout(timer);
+      window.removeEventListener("scroll", onScroll);
+    };
+
+    const trigger = () => {
+      if (triggered) return;
+      triggered = true;
+      setAppointmentOpen(true);
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ t: Date.now() }));
+      } catch {
+        // ignore
+      }
+      cleanup();
+    };
+
+    const onScroll = () => {
+      const total = document.documentElement.scrollHeight;
+      if (total === 0) return;
+      const scrolled = window.scrollY + window.innerHeight;
+      if (scrolled / total >= 0.6) trigger();
+    };
+
+    timer = window.setTimeout(trigger, 7000);
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return cleanup;
   }, []);
 
   const heroBgRef = useRef<HTMLDivElement>(null);
@@ -231,7 +277,7 @@ function Index() {
 
   return (
     <div className="min-h-screen bg-background text-foreground scroll-smooth">
-      {/* Appointment popup — auto-opens on load */}
+      {/* Appointment popup — delayed trigger (7s or 60% scroll, 7-day cooldown) */}
       <Dialog open={appointmentOpen} onOpenChange={setAppointmentOpen}>
         <DialogContent className="max-w-xl max-h-[90vh] overflow-y-auto p-6 sm:p-8">
           <DialogHeader>
@@ -290,13 +336,18 @@ function Index() {
           <button
             className="md:hidden p-2"
             onClick={() => setOpen(!open)}
-            aria-label="Menu"
+            aria-label="Toggle navigation menu"
+            aria-expanded={open}
+            aria-controls="mobile-nav"
           >
             <Menu className="h-5 w-5" />
           </button>
         </div>
         {open && (
-          <div className="md:hidden border-t border-border bg-background px-6 py-4 flex flex-col gap-4">
+          <div
+            id="mobile-nav"
+            className="md:hidden border-t border-border bg-background px-6 py-4 flex flex-col gap-4"
+          >
             {nav.map((n) =>
               n.to ? (
                 <Link
@@ -608,14 +659,20 @@ function Index() {
                 Contact
               </h4>
               <div className="space-y-3">
-                <p className="flex items-center gap-3 text-sm text-white/70 font-bold">
+                <a
+                  href="tel:+917980103899"
+                  className="flex items-center gap-3 text-sm text-white/70 font-bold hover:text-white transition-colors"
+                >
                   <Phone className="h-4 w-4 text-white/70 shrink-0" />
                   +91 7980103899
-                </p>
-                <p className="flex items-center gap-3 text-sm text-white/70 font-bold">
+                </a>
+                <a
+                  href="mailto:drsuranjanaroy@gmail.com"
+                  className="flex items-center gap-3 text-sm text-white/70 font-bold hover:text-white transition-colors"
+                >
                   <Mail className="h-4 w-4 text-white/70 shrink-0" />
                   drsuranjanaroy@gmail.com
-                </p>
+                </a>
               </div>
             </div>
           </div>
@@ -623,16 +680,8 @@ function Index() {
             <h4 className="font-semibold text-sm uppercase tracking-wider text-white/90 mb-4">
               Serviceable Locations
             </h4>
-            <ul className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-2 text-sm text-white/70">
-              {[
-                "Kolkata",
-                "Siliguri",
-                "Purulia",
-                "Malda",
-                "Dankuni",
-                "Musheerabad",
-                "Kalyani",
-              ].map((place) => (
+            <ul className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-2 text-sm text-white/70">
+              {LOCATIONS.map((place) => (
                 <li key={place} className="flex items-center gap-2">
                   <span className="h-1 w-1 rounded-full bg-primary" />
                   {place}
@@ -679,9 +728,13 @@ const ServiceCard = memo(function ServiceCard({
   );
 
   if ("href" in service && service.href) {
+    const [path, query] = service.href.split("?");
+    const search = query ? Object.fromEntries(new URLSearchParams(query)) : undefined;
+    // Use TanStack Link with search for ?open= deep-link support; fallback to href if needs full reload
     return (
       <Link
-        to={service.href}
+        to={path}
+        search={search as never}
         className="group bg-card p-8 rounded-2xl border border-border transition-all hover:-translate-y-1 block"
         style={{ boxShadow: "var(--shadow-card)" }}
       >

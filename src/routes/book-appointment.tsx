@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Stethoscope, Phone, Mail } from "lucide-react";
+import { ArrowLeft, MapPin, Stethoscope, Phone, Mail } from "lucide-react";
 
 import { AppointmentForm } from "@/components/appointment-form";
 
@@ -78,13 +78,55 @@ function BookAppointment() {
               style={{ boxShadow: "var(--shadow-card)" }}
             >
               <h3
-                className="font-semibold mb-4"
+                className="font-semibold mb-2"
+                style={{ color: "var(--navy)" }}
+              >
+                Clinics
+              </h3>
+              <div className="flex items-start gap-2 text-sm text-muted-foreground mb-3">
+                <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
+                <span>Siliguri & Jadavpur, Kolkata</span>
+              </div>
+              <div className="flex flex-wrap gap-3 mb-4">
+                <a
+                  href="https://maps.google.com/?q=Siliguri+734011"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-xs font-medium text-primary underline underline-offset-2"
+                >
+                  View Siliguri on Maps
+                </a>
+                <a
+                  href="https://maps.google.com/?q=Jadavpur+Kolkata"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-xs font-medium text-primary underline underline-offset-2"
+                >
+                  View Jadavpur on Maps
+                </a>
+              </div>
+              <h3
+                className="font-semibold mb-4 mt-6"
                 style={{ color: "var(--navy)" }}
               >
                 Direct contact
               </h3>
-              <Info icon={Phone} lines={["+91 7980103899"]} />
-              <Info icon={Mail} lines={["drsuranjanaroy@gmail.com"]} />
+              <div className="flex items-center gap-3 py-2.5 border-b border-border">
+                <div className="h-9 w-9 rounded-lg bg-secondary flex items-center justify-center shrink-0">
+                  <Phone className="h-4 w-4 text-primary" />
+                </div>
+                <a href="tel:+917980103899" className="text-sm text-muted-foreground hover:text-primary font-medium">
+                  +91 7980103899
+                </a>
+              </div>
+              <div className="flex items-center gap-3 py-2.5">
+                <div className="h-9 w-9 rounded-lg bg-secondary flex items-center justify-center shrink-0">
+                  <Mail className="h-4 w-4 text-primary" />
+                </div>
+                <a href="mailto:drsuranjanaroy@gmail.com" className="text-sm text-muted-foreground hover:text-primary font-medium break-all">
+                  drsuranjanaroy@gmail.com
+                </a>
+              </div>
             </div>
             <div
               className="rounded-2xl p-6 text-white"

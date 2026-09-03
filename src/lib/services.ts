@@ -8,6 +8,8 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
+import { LOCATIONS } from "./locations";
+
 export interface ServiceSection {
   title: string;
   body: string;
@@ -59,8 +61,8 @@ export const services: Service[] = [
         body: "Procedures range from minor oral surgery — extractions, biopsies, frenectomies — to major reconstructive work. This includes segmental resection and reconstruction for aggressive jaw cysts and tumours (a subject of Dr. Roy's published case report on managing odontogenic keratocyst), open and closed reduction of facial fractures, preprosthetic surgery to prepare the jaw for dentures and implants, and the full range of diagnostic and therapeutic surgery of the oral cavity. Each plan is made after proper clinical and radiographic assessment.",
       },
       {
-        title: "Care in Siliguri and Kolkata",
-        body: "Dr. Suranjana Roy (MDS, WBDC Reg. No. 7324-A) consults in Siliguri (Pin 734011) and at Jadavpur, Kolkata, with hospital training that includes maxillofacial and surgical care observerships at Desun Hospital, Kolkata, and head and neck oncology at Chittaranjan National Cancer Institute (CNCI). Whether your concern is a painful wisdom tooth or a complex jaw condition, you receive the same specialist-led assessment, honest explanation and unhurried counselling.",
+        title: `Care in ${LOCATIONS[1]} and Kolkata`,
+        body: `Dr. Suranjana Roy (MDS, WBDC Reg. No. 7324-A) consults in ${LOCATIONS[1]} (Pin 734011) and at ${LOCATIONS[0]}, with hospital training that includes maxillofacial and surgical care observerships at Desun Hospital, Kolkata, and head and neck oncology at Chittaranjan National Cancer Institute (CNCI). Whether your concern is a painful wisdom tooth or a complex jaw condition, you receive the same specialist-led assessment, honest explanation and unhurried counselling.`,
       },
     ],
     faqs: [
@@ -110,7 +112,7 @@ export const services: Service[] = [
       },
       {
         title: "Why choose Dr. Suranjana Roy",
-        body: "Dr. Suranjana Roy (MDS, WBDC Reg. No. 7324-A) is an Oral & Maxillofacial Surgeon with dedicated training in head and neck surgical oncology, including a clinical observership at Chittaranjan National Cancer Institute (CNCI), Kolkata, and published academic work on nodal staging of oral cancer and the management of odontogenic keratocyst with segmental resection. She consults in Siliguri and at Jadavpur, Kolkata, offering specialist-led cancer care with clear communication, honest counselling and compassionate, patient-first treatment.",
+        body: `Dr. Suranjana Roy (MDS, WBDC Reg. No. 7324-A) is an Oral & Maxillofacial Surgeon with dedicated training in head and neck surgical oncology, including a clinical observership at Chittaranjan National Cancer Institute (CNCI), Kolkata, and published academic work on nodal staging of oral cancer and the management of odontogenic keratocyst with segmental resection. She consults in ${LOCATIONS[1]} and at ${LOCATIONS[0]}, offering specialist-led cancer care with clear communication, honest counselling and compassionate, patient-first treatment.`,
       },
     ],
     faqs: [
@@ -152,7 +154,7 @@ export const services: Service[] = [
       },
       {
         title: "Care for the whole family",
-        body: "From children's first dental visits to senior care, Dr. Roy's practice in Siliguri and Jadavpur, Kolkata offers unhurried examinations, honest advice on what does and does not need treatment, and a preventive plan tailored to your risk factors — diet, oral hygiene, tobacco and alcohol use, and existing dental work.",
+        body: `From children's first dental visits to senior care, Dr. Roy's practice in ${LOCATIONS[1]} and ${LOCATIONS[0]} offers unhurried examinations, honest advice on what does and does not need treatment, and a preventive plan tailored to your risk factors — diet, oral hygiene, tobacco and alcohol use, and existing dental work.`,
       },
     ],
     faqs: [
