@@ -20,6 +20,12 @@ export interface ServiceFaq {
   a: string;
 }
 
+export interface ServiceImage {
+  src: string;
+  alt: string;
+  label: string;
+}
+
 export interface Service {
   id: string;
   icon: LucideIcon;
@@ -29,6 +35,8 @@ export interface Service {
   tagline: string;
   /** Labeled image placeholders for device / equipment / procedure photos */
   imagePlaceholders: string[];
+  /** Clinical and procedure photography */
+  images: ServiceImage[];
   sections: ServiceSection[];
   faqs: ServiceFaq[];
 }
@@ -46,6 +54,23 @@ export const services: Service[] = [
       "Surgical instrument set — maxillofacial procedures",
       "Facial fracture fixation (titanium plates & screws)",
       "Wisdom tooth (third molar) surgical extraction",
+    ],
+    images: [
+      {
+        src: "/images/services/maxillofacial-surgery-01.webp",
+        alt: "Sterilized maxillofacial surgical instrument set on blue sterile drape",
+        label: "Surgical instrument set — maxillofacial procedures",
+      },
+      {
+        src: "/images/services/maxillofacial-surgery-02.webp",
+        alt: "Titanium mini-plate and screws for facial fracture fixation on mandible model",
+        label: "Facial fracture fixation (titanium plates & screws)",
+      },
+      {
+        src: "/images/services/maxillofacial-surgery-03.webp",
+        alt: "Dentist evaluating impacted wisdom tooth with panoramic X-ray in background",
+        label: "Wisdom tooth (third molar) surgical extraction",
+      },
     ],
     sections: [
       {
@@ -97,6 +122,23 @@ export const services: Service[] = [
       "Neck dissection — lymph node removal",
       "Jaw reconstruction with bone / soft tissue flap",
     ],
+    images: [
+      {
+        src: "/images/services/head-and-neck-oncosurgery-01.webp",
+        alt: "Surgical oncology team reviewing head and neck CT scan in operating theatre",
+        label: "Head & neck surgical procedure — tumour resection",
+      },
+      {
+        src: "/images/services/head-and-neck-oncosurgery-02.webp",
+        alt: "Anatomical model showing neck lymph node levels for neck dissection education",
+        label: "Neck dissection — lymph node removal",
+      },
+      {
+        src: "/images/services/head-and-neck-oncosurgery-03.webp",
+        alt: "3D-printed mandible model with titanium reconstruction plate for jaw reconstruction",
+        label: "Jaw reconstruction with bone / soft tissue flap",
+      },
+    ],
     sections: [
       {
         title: "What is head and neck oncosurgery?",
@@ -143,6 +185,23 @@ export const services: Service[] = [
       "Ultrasonic scaling / cleaning equipment",
       "Intraoral camera & diagnostic imaging",
     ],
+    images: [
+      {
+        src: "/images/services/general-dentistry-01.webp",
+        alt: "Routine dental examination with dentist and patient in modern clinic",
+        label: "Dental examination — routine check-up",
+      },
+      {
+        src: "/images/services/general-dentistry-02.webp",
+        alt: "Ultrasonic scaler handpiece on dental unit tray",
+        label: "Ultrasonic scaling / cleaning equipment",
+      },
+      {
+        src: "/images/services/general-dentistry-03.webp",
+        alt: "Intraoral camera showing magnified tooth image on chairside monitor",
+        label: "Intraoral camera & diagnostic imaging",
+      },
+    ],
     sections: [
       {
         title: "What general dentistry covers",
@@ -180,6 +239,23 @@ export const services: Service[] = [
       "Root canal procedure — working under rubber dam isolation",
       "Rotary endodontic instruments (endomotor & files)",
       "Digital apex locator & intraoperative X-ray imaging",
+    ],
+    images: [
+      {
+        src: "/images/services/endodontic-treatment-01.webp",
+        alt: "Root canal treatment with rubber dam isolation on single tooth",
+        label: "Root canal procedure — working under rubber dam isolation",
+      },
+      {
+        src: "/images/services/endodontic-treatment-02.webp",
+        alt: "Rotary endodontic files and endomotor handpiece",
+        label: "Rotary endodontic instruments (endomotor & files)",
+      },
+      {
+        src: "/images/services/endodontic-treatment-03.webp",
+        alt: "Digital apex locator and periapical X-ray showing molar root canals chairside",
+        label: "Digital apex locator & intraoperative X-ray imaging",
+      },
     ],
     sections: [
       {
@@ -219,6 +295,23 @@ export const services: Service[] = [
       "Dental crown preparation & cementation",
       "Bridge / implant prosthesis components",
     ],
+    images: [
+      {
+        src: "/images/services/restorative-dentistry-01.webp",
+        alt: "Dentist placing tooth-coloured composite filling on molar",
+        label: "Tooth-coloured composite filling procedure",
+      },
+      {
+        src: "/images/services/restorative-dentistry-02.webp",
+        alt: "Prepared molar and zirconia crown before cementation on dental model",
+        label: "Dental crown preparation & cementation",
+      },
+      {
+        src: "/images/services/restorative-dentistry-03.webp",
+        alt: "Ceramic dental bridge and implant prosthesis components",
+        label: "Bridge / implant prosthesis components",
+      },
+    ],
     sections: [
       {
         title: "What restorative dentistry includes",
@@ -256,6 +349,23 @@ export const services: Service[] = [
       "Smile design — before & after aesthetic case",
       "Complete / partial denture prosthesis",
       "Full-mouth rehabilitation — prosthetic work-up",
+    ],
+    images: [
+      {
+        src: "/images/services/aesthetic-prosthetic-rehabilitation-01.webp",
+        alt: "Before and after smile design showing natural aesthetic improvement",
+        label: "Smile design — before & after aesthetic case",
+      },
+      {
+        src: "/images/services/aesthetic-prosthetic-rehabilitation-02.webp",
+        alt: "Complete and partial denture prostheses on neutral background",
+        label: "Complete / partial denture prosthesis",
+      },
+      {
+        src: "/images/services/aesthetic-prosthetic-rehabilitation-03.webp",
+        alt: "Full-mouth rehabilitation work-up with articulated models and smile design plan",
+        label: "Full-mouth rehabilitation — prosthetic work-up",
+      },
     ],
     sections: [
       {
