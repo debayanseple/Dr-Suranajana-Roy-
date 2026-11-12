@@ -53,6 +53,7 @@ export const Route = createFileRoute("/")({
           "Specialist care in oral surgery, head & neck oncosurgery and comprehensive dentistry.",
       },
     ],
+    canonical: "https://dr-suranajana-roy.vercel.app/",
   }),
   component: Index,
 });

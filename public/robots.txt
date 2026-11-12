@@ -1,4 +1,15 @@
-User-agent: *
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /api/
+
+User-agent: GPTBot
 Allow: /
 
-Sitemap: https://dr-suranajana-roy.vercel.app/sitemap.xml
+# Allow all other bots
+User-agent: *
+Allow: /

@@ -18,6 +18,7 @@ export const Route = createFileRoute("/book-appointment")({
         content: "Schedule a consultation with Dr. Suranjana Roy.",
       },
     ],
+    canonical: "https://dr-suranajana-roy.vercel.app/book-appointment",
   }),
   component: BookAppointment,
 });

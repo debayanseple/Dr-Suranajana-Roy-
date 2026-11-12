@@ -35,6 +35,9 @@ export const Route = createFileRoute("/case-studies/$slug")({
             : []),
         ]
       : [{ title: "Case Study — Dr. Suranjana Roy" }],
+    canonical: loaderData
+      ? `https://dr-suranajana-roy.vercel.app/case-studies/${loaderData.slug}`
+      : "https://dr-suranajana-roy.vercel.app/case-studies",
   }),
   notFoundComponent: () => (
     <div className="min-h-screen flex flex-col items-center justify-center gap-4 p-8 text-center">

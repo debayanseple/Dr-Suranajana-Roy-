@@ -41,6 +41,7 @@ export const Route = createFileRoute("/services/")({
           "Specialist surgical and dental care in Kolkata & Siliguri — explore each service in detail.",
       },
     ],
+    canonical: "https://dr-suranajana-roy.vercel.app/services",
   }),
   component: Services,
 });

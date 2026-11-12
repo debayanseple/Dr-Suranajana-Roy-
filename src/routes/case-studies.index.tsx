@@ -17,6 +17,7 @@ export const Route = createFileRoute("/case-studies/")({
         content: "Selected clinical cases in oral & maxillofacial surgery.",
       },
     ],
+    canonical: "https://dr-suranajana-roy.vercel.app/case-studies",
   }),
   component: CaseStudies,
 });
