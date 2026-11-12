@@ -9,7 +9,6 @@ import {
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/react";
-
 import appCss from "../styles.css?url";
 import heroImg from "../assets/dr-suranjana-hero.jpg";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -67,7 +66,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
           </button>
           <a
             href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+            className="inline-flex items-center justify-rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
             Go home
           </a>
@@ -76,6 +75,43 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
     </div>
   );
 }
+
+// Root-level Person + WebSite schema as JSON-LD (included on every page)
+const rootPersonSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Dr. Suranjana Roy",
+  jobTitle: "Oral & Maxillofacial Surgeon and Onco Surgeon",
+  url: "https://dr-suranajana-roy.vercel.app/",
+  telephone: "+91-7980103899",
+  email: "drsuranjanaroy@gmail.com",
+  areaServed: ["Siliguri", "Kolkata", "West Bengal"],
+  address: [
+    {
+      "@type": "PostalAddress",
+      addressLocality: "Siliguri",
+      addressRegion: "West Bengal",
+      postalCode: "734011",
+      addressCountry: "IN",
+    },
+    {
+      "@type": "PostalAddress",
+      addressLocality: "Jadavpur",
+      addressRegion: "Kolkata, West Bengal",
+      postalCode: "700092",
+      addressCountry: "IN",
+    },
+  ],
+};
+
+const rootWebsiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Dr. Suranjana Roy",
+  url: "https://dr-suranajana-roy.vercel.app/",
+  description: "Oral & Maxillofacial Surgery and Head & Neck Oncology information",
+  publisher: "Dr. Suranjana Roy",
+};
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   {
@@ -96,7 +132,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           content:
             "Consult Dr. Suranjana Roy, an expert Oral & Maxillofacial Surgeon and Cancer Doctor in Kolkata and Siliguri, specializing in head and neck oncosurgery and jaw reconstruction.",
         },
-        { name: "author", content: "Dr. Suranjana Roy" },
         {
           property: "og:title",
           content: "Dr. Suranjana Roy — Oral & Maxillofacial Surgeon",
@@ -128,64 +163,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       scripts: [
         {
           type: "application/ld+json",
-          children: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Physician",
-            name: "Dr. Suranjana Roy",
-            medicalSpecialty: ["OralAndMaxillofacialSurgery", "Oncologic"],
-            url: "https://dr-suranajana-roy.vercel.app/",
-            telephone: "+91-7980103899",
-            email: "drsuranjanaroy@gmail.com",
-            address: [
-              {
-                "@type": "PostalAddress",
-                addressLocality: "Siliguri",
-                addressRegion: "West Bengal",
-                postalCode: "734011",
-                addressCountry: "IN",
-              },
-              {
-                "@type": "PostalAddress",
-                addressLocality: "Jadavpur",
-                addressRegion: "Kolkata, West Bengal",
-                addressCountry: "IN",
-              },
-            ],
-            areaServed: ["Siliguri", "Kolkata", "West Bengal"],
-          }),
+          children: JSON.stringify(rootPersonSchema),
         },
         {
           type: "application/ld+json",
-          children: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "What does a head and neck onco surgeon do?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "A head and neck onco surgeon is a cancer specialist who diagnoses and surgically treats tumours of the mouth, jaw, throat, salivary glands and face. Dr. Suranjana Roy, an MDS Oral & Maxillofacial Surgeon, performs cancer removal (resection) of oral and jaw tumours, neck lymph-node dissection, and reconstruction of the jaw and face after tumour removal — restoring both function and appearance.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "When should I consult an oral cancer doctor?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "See an oral cancer doctor promptly if you notice a mouth ulcer that hasn't healed in more than 2–3 weeks, a red or white patch inside the cheek, tongue or gums, a lump in the jaw or neck, loose teeth without gum disease, difficulty or pain when swallowing, unexplained bleeding from the mouth, or numbness of the lip or chin. Early detection dramatically improves outcomes — when in doubt, get it examined.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Does Dr. Suranjana Roy consult in Kolkata?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Yes. Dr. Suranjana Roy consults at two locations in West Bengal — Siliguri (Pin 734011) and Jadavpur, Kolkata. You can request an appointment at either location through the Book Appointment form on this site or by calling +91 7980103899.",
-                },
-              },
-            ],
-          }),
+          children: JSON.stringify(rootWebsiteSchema),
         },
       ],
     }),
@@ -193,7 +175,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     component: RootComponent,
     notFoundComponent: NotFoundComponent,
     errorComponent: ErrorComponent,
-  },
+  }
 );
 
 function RootShell({ children }: { children: ReactNode }) {
@@ -218,7 +200,6 @@ function RootShell({ children }: { children: ReactNode }) {
           media="print"
           onLoad="this.media='all'"
         />
-
         {/* Preload hero image */}
         <link rel="preload" as="image" href={heroImg} fetchPriority="high" />
 
