@@ -5,11 +5,11 @@ import { caseStudies } from "@/lib/case-studies";
 export const Route = createFileRoute("/case-studies/")({
   head: () => ({
     meta: [
-      { title: "Case Studies — Dr. Suranjana Roy" },
+      { title: "Case Studies — Dr. Suranjana Roy, MDS" },
       {
         name: "description",
         content:
-          "Selected clinical case studies in oral & maxillofacial surgery and head & neck oncology by Dr. Suranjana Roy.",
+          "Selected clinical case studies in oral & maxillofacial surgery and head & neck oncology by Dr. Suranjana Roy, MDS.",
       },
       { property: "og:title", content: "Case Studies — Dr. Suranjana Roy" },
       {

@@ -6,16 +6,16 @@ import { AppointmentForm } from "@/components/appointment-form";
 export const Route = createFileRoute("/book-appointment")({
   head: () => ({
     meta: [
-      { title: "Book Appointment — Dr. Suranjana Roy" },
+      { title: "Book Appointment — Dr. Suranjana Roy, MDS" },
       {
         name: "description",
         content:
-          "Request a consultation with Dr. Suranjana Roy, MDS Oral & Maxillofacial Surgeon, Siliguri.",
+          "Request a consultation with Dr. Suranjana Roy, MDS Oral & Maxillofacial Surgeon, available in Siliguri and Kolkata.",
       },
       { property: "og:title", content: "Book Appointment — Dr. Suranjana Roy" },
       {
         property: "og:description",
-        content: "Schedule a consultation with Dr. Suranjana Roy.",
+        content: "Schedule a consultation with Dr. Suranjana Roy, MDS.",
       },
     ],
     canonical: "https://dr-suranajana-roy.vercel.app/book-appointment",
