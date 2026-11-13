@@ -271,12 +271,20 @@ export function AppointmentForm() {
             >
               Message on WhatsApp
             </a>
-            <a href="tel:+917980103899" className="text-xs font-medium text-primary underline underline-offset-2">
+            <a href="tel:+17980103899" className="text-xs font-medium text-primary underline underline-offset-2">
               Call +91 7980103899
             </a>
           </div>
         </div>
       )}
+      {/* Appointment request disclaimer */}
+      <p
+        className="mt-3 text-xs text-muted-foreground leading-relaxed"
+      >
+        Appointment requests are subject to confirmation. For urgent or concerning
+        symptoms, contact the clinic directly or seek appropriate medical attention.
+        Submitting this form does not guarantee a confirmed appointment.
+      </p>
       <button
         type="submit"
         disabled={submitting}

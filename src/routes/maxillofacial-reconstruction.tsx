@@ -2,19 +2,26 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowLeft,
   ArrowRight,
+  Calendar,
   Stethoscope,
   ShieldPlus,
   Sparkles,
 } from "lucide-react";
 import { useState } from "react";
 import { services } from "@/lib/services";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { ServiceImageCard } from "@/components/service-image-card";
 
 export const Route = createFileRoute("/maxillofacial-reconstruction")({
   head: () => ({
     meta: [
       {
-        title:
-          "Maxillofacial Reconstruction Kolkata | Dr. Suranjana Roy, MDS",
+        title: "Maxillofacial Reconstruction Kolkata | Dr. Suranjana Roy, MDS",
       },
       {
         name: "description",
@@ -31,7 +38,8 @@ export const Route = createFileRoute("/maxillofacial-reconstruction")({
           "Maxillofacial reconstruction specialist in Kolkata — jaw reconstruction, bone grafts, facial contour restoration and post-cancer surgical reconstruction.",
       },
     ],
-    canonical: "https://dr-suranajana-roy.vercel.app/maxillofacial-reconstruction",
+    canonical:
+      "https://dr-suranajana-roy.vercel.app/maxillofacial-reconstruction",
   }),
   component: MaxillofacialReconstruction,
 });
@@ -79,9 +87,9 @@ function MaxillofacialReconstruction() {
           <p className="mt-5 text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Dr. Suranjana Roy (MDS, WBDC Reg. No. 7324-A) provides maxillofacial
             reconstruction in Kolkata at Jadavpur and in Siliguri (Pin 734011).
-            Reconstruction restores chewing, speech and facial contour after cancer
-            resection, trauma, or congenital conditions. Bone grafts and flap
-            techniques are performed in the same sitting as tumour removal.
+            Reconstruction restores chewing, speech and facial contour after
+            cancer resection, trauma, or congenital conditions. Bone grafts and
+            flap techniques are performed in the same sitting as tumour removal.
           </p>
           <Link
             to="/book-appointment"
@@ -138,18 +146,10 @@ function MaxillofacialReconstruction() {
                         {service.tagline}
                       </p>
 
-                      {/* Image placeholders for device / equipment / procedure photos */}
+                      {/* Clinical & procedure imagery */}
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        {service.imagePlaceholders.map((label) => (
-                          <div
-                            key={label}
-                            className="rounded-2xl border-2 border-dashed border-border bg-secondary/40 p-6 flex flex-col items-center justify-center text-center min-h-40"
-                          >
-                            <Icon className="h-8 w-8 text-muted-foreground/60 mb-3" />
-                            <span className="text-xs font-medium text-muted-foreground/80 leading-relaxed">
-                              {label}
-                            </span>
-                          </div>
+                        {service.images.map((img) => (
+                          <ServiceImageCard key={img.label} image={img} />
                         ))}
                       </div>
 

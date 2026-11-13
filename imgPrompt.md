@@ -28,6 +28,13 @@
 ```
 Keep `seed` fixed (+/- 5) across all 18 for visual consistency. If Antigravity exposes `referenceImages`, add one approved clinic interior as style reference for all.
 
+### Doctor Likeness & Reference Instruction (MANDATORY)
+
+Whenever a doctor appears in any image, **always use Dr. Suranjana Roy** as depicted in the reference portrait:
+- **Reference Image:** `src/assets/dr-suranjana-reference.jpg` (`OT_dress_profile-removebg-preview.png` / `dr-suranjana-main.png`)
+- **Doctor Description:** Indian female oral & maxillofacial surgeon in her early-to-mid 30s, warm South Asian complexion, oval face, dark expressive eyes, natural gently arched eyebrows, calm confident and compassionate expression.
+- **Attire:** Dark navy blue medical scrubs with pocket (or white consultation coat over scrubs), distinctive white surgical scrub cap with medical doodle illustrations (or hair neatly styled back in clinical bun).
+
 ### Global System Instruction (paste as System / Style Reference in Antigravity)
 
 ```

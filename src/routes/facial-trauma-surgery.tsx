@@ -2,18 +2,25 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowLeft,
   ArrowRight,
+  Calendar,
   Stethoscope,
   ShieldPlus,
 } from "lucide-react";
 import { useState } from "react";
 import { services } from "@/lib/services";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { ServiceImageCard } from "@/components/service-image-card";
 
 export const Route = createFileRoute("/facial-trauma-surgery")({
   head: () => ({
     meta: [
       {
-        title:
-          "Facial Trauma Surgeon Kolkata | Dr. Suranjana Roy, MDS",
+        title: "Facial Trauma Surgeon Kolkata | Dr. Suranjana Roy, MDS",
       },
       {
         name: "description",
@@ -76,10 +83,10 @@ function FacialTraumaSurgery() {
             Facial Trauma Surgeon in Kolkata
           </h1>
           <p className="mt-5 text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Dr. Suranjana Roy (MDS, WBDC Reg. No. 7324-A) treats facial trauma in
-            Kolkata at Jadavpur and in Siliguri (Pin 734011). Services include
-            facial fracture fixation with titanium plates, orbital floor repair,
-            soft tissue reconstruction, and mandibular realignment.
+            Dr. Suranjana Roy (MDS, WBDC Reg. No. 7324-A) treats facial trauma
+            in Kolkata at Jadavpur and in Siliguri (Pin 734011). Services
+            include facial fracture fixation with titanium plates, orbital floor
+            repair, soft tissue reconstruction, and mandibular realignment.
           </p>
           <Link
             to="/book-appointment"
@@ -136,18 +143,10 @@ function FacialTraumaSurgery() {
                         {service.tagline}
                       </p>
 
-                      {/* Image placeholders for device / equipment / procedure photos */}
+                      {/* Clinical & procedure imagery */}
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        {service.imagePlaceholders.map((label) => (
-                          <div
-                            key={label}
-                            className="rounded-2xl border-2 border-dashed border-border bg-secondary/40 p-6 flex flex-col items-center justify-center text-center min-h-40"
-                          >
-                            <Icon className="h-8 w-8 text-muted-foreground/60 mb-3" />
-                            <span className="text-xs font-medium text-muted-foreground/80 leading-relaxed">
-                              {label}
-                            </span>
-                          </div>
+                        {service.images.map((img) => (
+                          <ServiceImageCard key={img.label} image={img} />
                         ))}
                       </div>
 

@@ -18,6 +18,7 @@
 - **Env vars**: `BOOKING_WEBHOOK_URL` (server-only, no `VITE_` prefix). Create `.env` locally. Never put secrets behind `VITE_`.
 - **Vercel deployment**: `NITRO_PRESET=vercel` (set in `vite.config.ts`). Override with env var if needed — without explicit nitro config, Vercel deploys 404.
 - **New pages**: Every route file exports `head()` (title, meta description, OG tags). Follow the pattern in existing routes. `src/routes/README.md` has file-naming conventions.
+- **Doctor imagery likeness**: Whenever images depicting a doctor are generated or added, strictly use Dr. Suranjana Roy based on the reference portrait in `src/assets/dr-suranjana-reference.jpg` (navy scrubs, patterned surgical cap, warm South Asian complexion, early-30s female oral & maxillofacial surgeon).
 
 ## Architecture
 
