@@ -9,12 +9,51 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as OralCancerSurgeonKolkataRouteImport } from './routes/oral-cancer-surgeon-kolkata'
+import { Route as MaxillofacialSurgeonKolkataRouteImport } from './routes/maxillofacial-surgeon-kolkata'
+import { Route as MaxillofacialReconstructionRouteImport } from './routes/maxillofacial-reconstruction'
+import { Route as JawCystsAndTumoursRouteImport } from './routes/jaw-cysts-and-tumours'
+import { Route as HeadNeckOncologyRouteImport } from './routes/head-neck-oncology'
+import { Route as FacialTraumaSurgeryRouteImport } from './routes/facial-trauma-surgery'
 import { Route as BookAppointmentRouteImport } from './routes/book-appointment'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as CaseStudiesIndexRouteImport } from './routes/case-studies.index'
 import { Route as CaseStudiesSlugRouteImport } from './routes/case-studies.$slug'
 
+const OralCancerSurgeonKolkataRoute =
+  OralCancerSurgeonKolkataRouteImport.update({
+    id: '/oral-cancer-surgeon-kolkata',
+    path: '/oral-cancer-surgeon-kolkata',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const MaxillofacialSurgeonKolkataRoute =
+  MaxillofacialSurgeonKolkataRouteImport.update({
+    id: '/maxillofacial-surgeon-kolkata',
+    path: '/maxillofacial-surgeon-kolkata',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const MaxillofacialReconstructionRoute =
+  MaxillofacialReconstructionRouteImport.update({
+    id: '/maxillofacial-reconstruction',
+    path: '/maxillofacial-reconstruction',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const JawCystsAndTumoursRoute = JawCystsAndTumoursRouteImport.update({
+  id: '/jaw-cysts-and-tumours',
+  path: '/jaw-cysts-and-tumours',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HeadNeckOncologyRoute = HeadNeckOncologyRouteImport.update({
+  id: '/head-neck-oncology',
+  path: '/head-neck-oncology',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FacialTraumaSurgeryRoute = FacialTraumaSurgeryRouteImport.update({
+  id: '/facial-trauma-surgery',
+  path: '/facial-trauma-surgery',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BookAppointmentRoute = BookAppointmentRouteImport.update({
   id: '/book-appointment',
   path: '/book-appointment',
@@ -44,6 +83,12 @@ const CaseStudiesSlugRoute = CaseStudiesSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/book-appointment': typeof BookAppointmentRoute
+  '/facial-trauma-surgery': typeof FacialTraumaSurgeryRoute
+  '/head-neck-oncology': typeof HeadNeckOncologyRoute
+  '/jaw-cysts-and-tumours': typeof JawCystsAndTumoursRoute
+  '/maxillofacial-reconstruction': typeof MaxillofacialReconstructionRoute
+  '/maxillofacial-surgeon-kolkata': typeof MaxillofacialSurgeonKolkataRoute
+  '/oral-cancer-surgeon-kolkata': typeof OralCancerSurgeonKolkataRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
   '/case-studies/': typeof CaseStudiesIndexRoute
   '/services/': typeof ServicesIndexRoute
@@ -51,6 +96,12 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/book-appointment': typeof BookAppointmentRoute
+  '/facial-trauma-surgery': typeof FacialTraumaSurgeryRoute
+  '/head-neck-oncology': typeof HeadNeckOncologyRoute
+  '/jaw-cysts-and-tumours': typeof JawCystsAndTumoursRoute
+  '/maxillofacial-reconstruction': typeof MaxillofacialReconstructionRoute
+  '/maxillofacial-surgeon-kolkata': typeof MaxillofacialSurgeonKolkataRoute
+  '/oral-cancer-surgeon-kolkata': typeof OralCancerSurgeonKolkataRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
   '/case-studies': typeof CaseStudiesIndexRoute
   '/services': typeof ServicesIndexRoute
@@ -59,6 +110,12 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/book-appointment': typeof BookAppointmentRoute
+  '/facial-trauma-surgery': typeof FacialTraumaSurgeryRoute
+  '/head-neck-oncology': typeof HeadNeckOncologyRoute
+  '/jaw-cysts-and-tumours': typeof JawCystsAndTumoursRoute
+  '/maxillofacial-reconstruction': typeof MaxillofacialReconstructionRoute
+  '/maxillofacial-surgeon-kolkata': typeof MaxillofacialSurgeonKolkataRoute
+  '/oral-cancer-surgeon-kolkata': typeof OralCancerSurgeonKolkataRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
   '/case-studies/': typeof CaseStudiesIndexRoute
   '/services/': typeof ServicesIndexRoute
@@ -68,6 +125,12 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/book-appointment'
+    | '/facial-trauma-surgery'
+    | '/head-neck-oncology'
+    | '/jaw-cysts-and-tumours'
+    | '/maxillofacial-reconstruction'
+    | '/maxillofacial-surgeon-kolkata'
+    | '/oral-cancer-surgeon-kolkata'
     | '/case-studies/$slug'
     | '/case-studies/'
     | '/services/'
@@ -75,6 +138,12 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/book-appointment'
+    | '/facial-trauma-surgery'
+    | '/head-neck-oncology'
+    | '/jaw-cysts-and-tumours'
+    | '/maxillofacial-reconstruction'
+    | '/maxillofacial-surgeon-kolkata'
+    | '/oral-cancer-surgeon-kolkata'
     | '/case-studies/$slug'
     | '/case-studies'
     | '/services'
@@ -82,6 +151,12 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/book-appointment'
+    | '/facial-trauma-surgery'
+    | '/head-neck-oncology'
+    | '/jaw-cysts-and-tumours'
+    | '/maxillofacial-reconstruction'
+    | '/maxillofacial-surgeon-kolkata'
+    | '/oral-cancer-surgeon-kolkata'
     | '/case-studies/$slug'
     | '/case-studies/'
     | '/services/'
@@ -90,6 +165,12 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BookAppointmentRoute: typeof BookAppointmentRoute
+  FacialTraumaSurgeryRoute: typeof FacialTraumaSurgeryRoute
+  HeadNeckOncologyRoute: typeof HeadNeckOncologyRoute
+  JawCystsAndTumoursRoute: typeof JawCystsAndTumoursRoute
+  MaxillofacialReconstructionRoute: typeof MaxillofacialReconstructionRoute
+  MaxillofacialSurgeonKolkataRoute: typeof MaxillofacialSurgeonKolkataRoute
+  OralCancerSurgeonKolkataRoute: typeof OralCancerSurgeonKolkataRoute
   CaseStudiesSlugRoute: typeof CaseStudiesSlugRoute
   CaseStudiesIndexRoute: typeof CaseStudiesIndexRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
@@ -97,6 +178,48 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/oral-cancer-surgeon-kolkata': {
+      id: '/oral-cancer-surgeon-kolkata'
+      path: '/oral-cancer-surgeon-kolkata'
+      fullPath: '/oral-cancer-surgeon-kolkata'
+      preLoaderRoute: typeof OralCancerSurgeonKolkataRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/maxillofacial-surgeon-kolkata': {
+      id: '/maxillofacial-surgeon-kolkata'
+      path: '/maxillofacial-surgeon-kolkata'
+      fullPath: '/maxillofacial-surgeon-kolkata'
+      preLoaderRoute: typeof MaxillofacialSurgeonKolkataRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/maxillofacial-reconstruction': {
+      id: '/maxillofacial-reconstruction'
+      path: '/maxillofacial-reconstruction'
+      fullPath: '/maxillofacial-reconstruction'
+      preLoaderRoute: typeof MaxillofacialReconstructionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jaw-cysts-and-tumours': {
+      id: '/jaw-cysts-and-tumours'
+      path: '/jaw-cysts-and-tumours'
+      fullPath: '/jaw-cysts-and-tumours'
+      preLoaderRoute: typeof JawCystsAndTumoursRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/head-neck-oncology': {
+      id: '/head-neck-oncology'
+      path: '/head-neck-oncology'
+      fullPath: '/head-neck-oncology'
+      preLoaderRoute: typeof HeadNeckOncologyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/facial-trauma-surgery': {
+      id: '/facial-trauma-surgery'
+      path: '/facial-trauma-surgery'
+      fullPath: '/facial-trauma-surgery'
+      preLoaderRoute: typeof FacialTraumaSurgeryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/book-appointment': {
       id: '/book-appointment'
       path: '/book-appointment'
@@ -138,6 +261,12 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BookAppointmentRoute: BookAppointmentRoute,
+  FacialTraumaSurgeryRoute: FacialTraumaSurgeryRoute,
+  HeadNeckOncologyRoute: HeadNeckOncologyRoute,
+  JawCystsAndTumoursRoute: JawCystsAndTumoursRoute,
+  MaxillofacialReconstructionRoute: MaxillofacialReconstructionRoute,
+  MaxillofacialSurgeonKolkataRoute: MaxillofacialSurgeonKolkataRoute,
+  OralCancerSurgeonKolkataRoute: OralCancerSurgeonKolkataRoute,
   CaseStudiesSlugRoute: CaseStudiesSlugRoute,
   CaseStudiesIndexRoute: CaseStudiesIndexRoute,
   ServicesIndexRoute: ServicesIndexRoute,

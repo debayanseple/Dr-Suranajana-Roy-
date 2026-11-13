@@ -277,6 +277,14 @@ export function AppointmentForm() {
           </div>
         </div>
       )}
+      {/* Appointment request disclaimer */}
+      <p
+        className="mt-3 text-xs text-muted-foreground leading-relaxed"
+      >
+        Appointment requests are subject to confirmation. For urgent or concerning
+        symptoms, contact the clinic directly or seek appropriate medical attention.
+        Submitting this form does not guarantee a confirmed appointment.
+      </p>
       <button
         type="submit"
         disabled={submitting}

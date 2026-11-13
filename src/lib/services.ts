@@ -114,7 +114,7 @@ export const services: Service[] = [
     icon: ShieldPlus,
     title: "Head & Neck Oncosurgery",
     shortDesc:
-      "Comprehensive surgical treatment for cancers of the head and neck region — from tumour removal and neck dissection to immediate reconstruction — expert care from a dedicated oral cancer doctor.",
+      "Comprehensive surgical treatment for cancers of the head and neck region — from tumour removal and neck dissection to immediate reconstruction.",
     tagline:
       "Specialist surgical care for cancers of the mouth, jaw, throat and face — combining precise tumour removal with immediate reconstruction.",
     imagePlaceholders: [
@@ -232,7 +232,7 @@ export const services: Service[] = [
     icon: Syringe,
     title: "Endodontic Treatment",
     shortDesc:
-      "Precision root canal therapy to save and restore compromised teeth — modern rotary, pain-free techniques that relieve infection and avoid extraction in one to two visits.",
+      "Precision root canal therapy to save and restore compromised teeth — modern rotary endodontic techniques that relieve infection.",
     tagline:
       "Root canal therapy that relieves pain and saves your natural tooth.",
     imagePlaceholders: [
@@ -264,7 +264,7 @@ export const services: Service[] = [
       },
       {
         title: "Modern, comfortable root canal care",
-        body: "Contrary to its reputation, root canal treatment performed promptly relieves pain rather than causing it. Dr. Roy uses contemporary techniques — rotary instrumentation, electronic working-length measurement and intraoperative radiographs — to make treatment precise, efficient and as comfortable as possible. Most teeth are finished in one or two visits and are then restored with a filling or crown for long-term strength.",
+        body: "Contrary to its reputation, root canal treatment performed promptly relieves pain rather than causing it. Dr. Roy uses contemporary techniques — rotary instrumentation, electronic working-length measurement and intraoperative radiographs — to make treatment precise, efficient and as comfortable as possible. Treatment duration depends on the clinical condition. Most teeth are restored with a filling or crown for long-term strength.",
       },
       {
         title: "When a tooth needs endodontic care",

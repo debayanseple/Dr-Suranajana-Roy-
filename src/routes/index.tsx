@@ -41,7 +41,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Consult Dr. Suranjana Roy, MDS Oral & Maxillofacial Surgeon, with a clinical focus on Head & Neck Surgical Oncology. Consultation availability and locations are verified.",
+          "Consult Dr. Suranjana Roy, MDS Oral & Maxillofacial Surgeon, with a clinical focus on Head & Neck Surgical Oncology. View consultation locations in Kolkata and Siliguri.",
       },
       {
         property: "og:title",
@@ -429,11 +429,11 @@ function Index() {
               <BadgeCheck className="h-4 w-4" /> WBDC Reg. No. 7324-A
             </div>
             <h1 className="text-5xl md:text-6xl font-bold tracking-tight leading-[1.05] text-white">
-              We take <span className="text-coral">care</span>
-              <span className="block mt-3 text-xl md:text-2xl font-semibold leading-snug text-white/90">
-                Dr. Suranjana Roy — Oral & Maxillofacial Surgeon
-              </span>
+              Dr. Suranjana Roy – Oral & Maxillofacial Surgeon in Kolkata
             </h1>
+            <p className="mt-4 text-lg md:text-xl font-medium text-teal-200">
+              Dr. Suranjana Roy is an MDS-qualified Oral and Maxillofacial Surgeon with a clinical focus on Head & Neck Surgical Oncology. Consultations are available in Kolkata and Siliguri, West Bengal.
+            </p>
             <p className="mt-4 text-lg md:text-xl font-medium text-teal-200">
               MDS — Oral & Maxillofacial Surgeon
             </p>

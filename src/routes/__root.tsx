@@ -125,16 +125,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         },
         {
           title:
-            "Dr. Suranjana Roy | Onco Surgeon & Maxillofacial Specialist in Kolkata & Siliguri",
+            "Dr. Suranjana Roy, MDS | Maxillofacial Surgeon Kolkata",
         },
         {
           name: "description",
           content:
-            "Consult Dr. Suranjana Roy, an expert Oral & Maxillofacial Surgeon and Cancer Doctor in Kolkata and Siliguri, specializing in head and neck oncosurgery and jaw reconstruction.",
+            "Consult Dr. Suranjana Roy, MDS Oral & Maxillofacial Surgeon, with a clinical focus on Head & Neck Surgical Oncology. View consultation locations in Kolkata and Siliguri.",
         },
         {
           property: "og:title",
-          content: "Dr. Suranjana Roy — Oral & Maxillofacial Surgeon",
+          content: "Dr. Suranjana Roy – Oral & Maxillofacial Surgeon in Kolkata",
         },
         {
           property: "og:description",
@@ -146,7 +146,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         { name: "twitter:card", content: "summary" },
         {
           name: "twitter:title",
-          content: "Dr. Suranjana Roy — Oral & Maxillofacial Surgeon",
+          content: "Dr. Suranjana Roy – Oral & Maxillofacial Surgeon in Kolkata",
         },
         {
           name: "twitter:description",
